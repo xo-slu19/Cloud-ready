@@ -1,0 +1,279 @@
+{
+  "domains": [
+    {
+      "id": "cloud-concepts",
+      "name": "Describe cloud concepts",
+      "examWeight": { "min": 25, "max": 30 },
+      "learningPath": "https://learn.microsoft.com/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
+    },
+    {
+      "id": "architecture-services",
+      "name": "Describe Azure architecture and services",
+      "examWeight": { "min": 35, "max": 40 },
+      "learningPath": "https://learn.microsoft.com/training/paths/azure-fundamentals-describe-azure-architecture-services/"
+    },
+    {
+      "id": "management-governance",
+      "name": "Describe Azure management and governance",
+      "examWeight": { "min": 30, "max": 35 },
+      "learningPath": "https://learn.microsoft.com/training/paths/describe-azure-management-governance/"
+    }
+  ],
+  "misconceptions": {
+    "provider-does-everything": "Thinking the cloud provider is responsible for everything",
+    "consumption-model": "Misunderstanding the consumption-based (pay-as-you-go) model",
+    "capex-vs-opex": "Mixing up capital and operational expenditure",
+    "service-types": "Mixing up IaaS, PaaS and SaaS",
+    "cloud-benefits": "Mixing up the benefits of the cloud (availability, reliability, elasticity, predictability)",
+    "regions-and-zones": "Mixing up regions, region pairs, availability zones and geographies",
+    "resource-hierarchy": "Misunderstanding how resource groups and other Azure containers work",
+    "storage-tiers": "Mixing up the blob storage access tiers",
+    "compute-options": "Mixing up the Azure compute options",
+    "policy-vs-rbac": "Confusing Azure Policy with role-based access control (RBAC)",
+    "governance-tools": "Mixing up governance tools (locks, policy, tags, Defender for Cloud)",
+    "cost-tools": "Mixing up the pricing calculator, TCO calculator and Cost Management",
+    "monitoring-tools": "Mixing up Azure Monitor, Advisor, Service Health and Arc"
+  },
+  "questions": [
+    {
+      "id": "cc-001",
+      "domain": "cloud-concepts",
+      "topic": "Shared responsibility model",
+      "question": "Your company runs an application on an Azure virtual machine (IaaS). Who is responsible for installing security updates on the VM's operating system?",
+      "choices": [
+        { "id": "a", "text": "Microsoft" },
+        { "id": "b", "text": "Your company (the customer)" },
+        { "id": "c", "text": "Microsoft and the customer share the task equally" },
+        { "id": "d", "text": "Nobody, because Azure VMs update themselves automatically" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "With IaaS, Microsoft is responsible for the physical datacenter, hosts and network. Everything you install on top, starting with the VM's operating system, is the customer's responsibility, including patches. The more you move towards PaaS and SaaS, the more Microsoft takes over.",
+      "wrongChoices": {
+        "a": { "why": "In IaaS, Microsoft looks after the physical hosts, network and datacenter, but the operating system inside your VM is yours to patch.", "misconception": "provider-does-everything" },
+        "c": { "why": "Responsibilities are divided by layer, not split 50/50. For a VM, the guest operating system sits fully on the customer side." },
+        "d": { "why": "Azure offers tools that can automate updates, but you have to turn them on and manage them. Patching is still your responsibility.", "misconception": "provider-does-everything" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/security/fundamentals/shared-responsibility"
+    },
+    {
+      "id": "cc-002",
+      "domain": "cloud-concepts",
+      "topic": "Consumption-based model",
+      "question": "A startup pays a monthly bill for the Azure virtual machines it uses, with no upfront hardware purchase. What type of expenditure is this?",
+      "choices": [
+        { "id": "a", "text": "Capital expenditure (CapEx)" },
+        { "id": "b", "text": "Operational expenditure (OpEx)" },
+        { "id": "c", "text": "A fixed cost" },
+        { "id": "d", "text": "A one-time cost" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Cloud computing is mostly OpEx: you pay for services as you use them, like an electricity or mobile data bill, with no big upfront purchase. This is the consumption-based model.",
+      "wrongChoices": {
+        "a": { "why": "CapEx is a large upfront spend on physical assets, like buying servers for your own datacenter. Paying monthly for what you use is the opposite.", "misconception": "capex-vs-opex" },
+        "c": { "why": "Cloud costs change with usage. If the startup runs fewer VMs next month, the bill goes down, so it isn't fixed.", "misconception": "consumption-model" },
+        "d": { "why": "The startup is billed every month for ongoing usage, not once.", "misconception": "consumption-model" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/training/modules/describe-cloud-compute/"
+    },
+    {
+      "id": "cc-003",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "question": "A developer wants to deploy a web app without managing servers, operating systems or patches, but still write and control the app's code. Which cloud service type fits best?",
+      "choices": [
+        { "id": "a", "text": "Infrastructure as a Service (IaaS)" },
+        { "id": "b", "text": "Platform as a Service (PaaS)" },
+        { "id": "c", "text": "Software as a Service (SaaS)" },
+        { "id": "d", "text": "On-premises hosting" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "PaaS provides a ready-made platform: Microsoft manages the operating system, runtime and patching, so developers can focus on their code and data. Azure App Service is a common PaaS example.",
+      "wrongChoices": {
+        "a": { "why": "With IaaS you would still manage the operating system, runtime and patching yourself.", "misconception": "service-types" },
+        "c": { "why": "SaaS gives you a finished application to use, like email. You don't deploy your own code to it.", "misconception": "service-types" },
+        "d": { "why": "On-premises means running your own servers, so you would manage everything, including the hardware." }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/training/modules/describe-cloud-service-types/"
+    },
+    {
+      "id": "cc-004",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "question": "An online shop gets a huge spike in traffic on Black Friday. Its cloud resources increase automatically during the spike and decrease afterwards, so it only pays for what it needs. Which cloud benefit is this?",
+      "choices": [
+        { "id": "a", "text": "High availability" },
+        { "id": "b", "text": "Elasticity" },
+        { "id": "c", "text": "Reliability" },
+        { "id": "d", "text": "Predictability" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Scalability means adding or removing resources to handle demand. When this happens automatically as demand changes, it is called elasticity. You pay for the extra capacity only while you need it.",
+      "wrongChoices": {
+        "a": { "why": "High availability is about keeping a service running with minimal downtime, not about matching resources to demand.", "misconception": "cloud-benefits" },
+        "c": { "why": "Reliability is a system's ability to recover from failures and keep working.", "misconception": "cloud-benefits" },
+        "d": { "why": "Predictability is about being able to forecast performance and costs.", "misconception": "cloud-benefits" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/training/modules/describe-benefits-use-cloud-services/"
+    },
+    {
+      "id": "as-001",
+      "domain": "architecture-services",
+      "topic": "Regions and availability zones",
+      "question": "What is an Azure availability zone?",
+      "choices": [
+        { "id": "a", "text": "A pair of Azure regions in the same geography, usually at least 300 miles apart" },
+        { "id": "b", "text": "One or more physically separate datacenters within an Azure region, each with independent power, cooling and networking" },
+        { "id": "c", "text": "A logical container that groups related Azure resources" },
+        { "id": "d", "text": "A boundary that keeps data inside a country or market to meet data residency rules" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Availability zones are physically separate locations inside one region. Each zone has one or more datacenters with independent power, cooling and networking, so if one zone fails the others keep running. Not every region supports them.",
+      "wrongChoices": {
+        "a": { "why": "That describes a region pair, which is used for disaster recovery across regions.", "misconception": "regions-and-zones" },
+        "c": { "why": "That describes a resource group.", "misconception": "resource-hierarchy" },
+        "d": { "why": "That describes an Azure geography.", "misconception": "regions-and-zones" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/reliability/availability-zones-overview"
+    },
+    {
+      "id": "as-002",
+      "domain": "architecture-services",
+      "topic": "Resource groups",
+      "question": "Which statement about Azure resource groups is true?",
+      "choices": [
+        { "id": "a", "text": "A resource can belong to several resource groups at the same time" },
+        { "id": "b", "text": "Deleting a resource group deletes all the resources inside it" },
+        { "id": "c", "text": "Resource groups can be nested inside other resource groups" },
+        { "id": "d", "text": "All resources in a resource group must be in the same region" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "A resource group is a container for resources that share a lifecycle. Because deleting the group deletes everything in it, people usually group resources they create and delete together, such as all the parts of a test environment.",
+      "wrongChoices": {
+        "a": { "why": "Each resource belongs to exactly one resource group at a time, although you can move it to another.", "misconception": "resource-hierarchy" },
+        "c": { "why": "Resource groups can't be nested.", "misconception": "resource-hierarchy" },
+        "d": { "why": "A resource group has a location for its metadata, but the resources inside it can be in different regions.", "misconception": "resource-hierarchy" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal"
+    },
+    {
+      "id": "as-003",
+      "domain": "architecture-services",
+      "topic": "Storage access tiers",
+      "question": "A company must keep old financial records for 7 years. They are almost never read, and waiting several hours to retrieve one is acceptable. Which blob storage access tier is cheapest for this?",
+      "choices": [
+        { "id": "a", "text": "Hot" },
+        { "id": "b", "text": "Cool" },
+        { "id": "c", "text": "Cold" },
+        { "id": "d", "text": "Archive" }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "The Archive tier has the lowest storage cost but the highest cost and delay to read data back. Archived data must be rehydrated before it can be read, which can take hours. It suits long-term retention such as compliance records.",
+      "wrongChoices": {
+        "a": { "why": "Hot is for data you access often. It has the highest storage cost.", "misconception": "storage-tiers" },
+        "b": { "why": "Cool is for infrequently accessed data kept at least 30 days, but it costs more to store than Archive.", "misconception": "storage-tiers" },
+        "c": { "why": "Cold is for rarely accessed data kept at least 90 days, but Archive is cheaper when you can wait hours to retrieve the data.", "misconception": "storage-tiers" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview"
+    },
+    {
+      "id": "as-004",
+      "domain": "architecture-services",
+      "topic": "Compute options",
+      "question": "You need to run a small piece of code every time a file is uploaded to storage. You don't want to manage servers, and you only want to pay when the code runs. Which Azure service fits best?",
+      "choices": [
+        { "id": "a", "text": "Azure Virtual Machines" },
+        { "id": "b", "text": "Azure Functions" },
+        { "id": "c", "text": "Azure Virtual Desktop" },
+        { "id": "d", "text": "Azure Virtual Network" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Functions is serverless compute: your code runs in response to events (a file upload, a timer, an HTTP request), Azure handles the servers, and on the Consumption plan you pay only when the code runs.",
+      "wrongChoices": {
+        "a": { "why": "A VM gives you full control, but you manage its operating system and pay while it is running, even when it is idle.", "misconception": "compute-options" },
+        "c": { "why": "Azure Virtual Desktop delivers Windows desktops and apps to users. It isn't for running event-driven code.", "misconception": "compute-options" },
+        "d": { "why": "A virtual network connects Azure resources to each other. It doesn't run code.", "misconception": "compute-options" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/azure-functions/functions-overview"
+    },
+    {
+      "id": "mg-001",
+      "domain": "management-governance",
+      "topic": "Azure Policy",
+      "question": "Your organisation wants to make sure that new resources can only be created in the South Africa North region. Which Azure service should you use?",
+      "choices": [
+        { "id": "a", "text": "Azure role-based access control (RBAC)" },
+        { "id": "b", "text": "Azure Policy" },
+        { "id": "c", "text": "Resource locks" },
+        { "id": "d", "text": "Microsoft Defender for Cloud" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Policy enforces rules on the resources themselves, such as allowed regions, required tags or allowed VM sizes. An easy way to remember it: RBAC is about users and what they can do, Policy is about resources and what they are allowed to be.",
+      "wrongChoices": {
+        "a": { "why": "RBAC controls who can do what. It can't limit which regions resources are created in.", "misconception": "policy-vs-rbac" },
+        "c": { "why": "Locks stop existing resources from being deleted or changed. They don't control where new resources are created.", "misconception": "governance-tools" },
+        "d": { "why": "Defender for Cloud monitors your security posture and threats. It isn't used to enforce region rules.", "misconception": "governance-tools" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/governance/policy/overview"
+    },
+    {
+      "id": "mg-002",
+      "domain": "management-governance",
+      "topic": "Resource locks",
+      "question": "A production database must not be deleted by accident, but the team still needs to change its settings. What should you apply to it?",
+      "choices": [
+        { "id": "a", "text": "A Read-only lock" },
+        { "id": "b", "text": "A Delete lock (CanNotDelete)" },
+        { "id": "c", "text": "A tag named \"do-not-delete\"" },
+        { "id": "d", "text": "Remove everyone's access to the subscription" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Resource locks protect resources from accidental changes. A Delete lock allows reading and changing the resource but blocks deletion. A Read-only lock blocks both changes and deletion. Locks apply even to administrators until the lock is removed.",
+      "wrongChoices": {
+        "a": { "why": "A Read-only lock blocks changes as well as deletion, so the team couldn't update the settings.", "misconception": "governance-tools" },
+        "c": { "why": "Tags are labels for organising resources. They don't block any actions.", "misconception": "governance-tools" },
+        "d": { "why": "This would also stop the team from changing settings, and it isn't how you protect a single resource.", "misconception": "policy-vs-rbac" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources"
+    },
+    {
+      "id": "mg-003",
+      "domain": "management-governance",
+      "topic": "Cost management tools",
+      "question": "Before moving to Azure, a company wants to compare the cost of running its current on-premises servers with the cost of running the same workloads in Azure. Which tool should it use?",
+      "choices": [
+        { "id": "a", "text": "Azure pricing calculator" },
+        { "id": "b", "text": "Total Cost of Ownership (TCO) calculator" },
+        { "id": "c", "text": "Azure Advisor" },
+        { "id": "d", "text": "Budgets in Microsoft Cost Management" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "The TCO calculator compares on-premises costs (servers, power, cooling, IT labour) with the cost of running in Azure. Use the pricing calculator to estimate specific Azure services, and Cost Management to track spending once you are running in Azure.",
+      "wrongChoices": {
+        "a": { "why": "The pricing calculator estimates the cost of Azure services you plan to use, but it doesn't compare them with on-premises costs.", "misconception": "cost-tools" },
+        "c": { "why": "Advisor gives recommendations for resources that are already running in Azure.", "misconception": "cost-tools" },
+        "d": { "why": "Budgets track and alert on spending you already have in Azure.", "misconception": "cost-tools" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/training/modules/describe-cost-management-azure/"
+    },
+    {
+      "id": "mg-004",
+      "domain": "management-governance",
+      "topic": "Monitoring tools",
+      "question": "Which Azure service analyses your deployed resources and gives personalised recommendations to improve cost, security, reliability and performance?",
+      "choices": [
+        { "id": "a", "text": "Azure Monitor" },
+        { "id": "b", "text": "Azure Advisor" },
+        { "id": "c", "text": "Azure Service Health" },
+        { "id": "d", "text": "Azure Arc" }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Advisor reviews your resources and gives practical recommendations in five categories: reliability, security, performance, operational excellence and cost. Think of it as a free consultant for your Azure setup.",
+      "wrongChoices": {
+        "a": { "why": "Azure Monitor collects and analyses metrics and logs, but the recommendations come from Advisor.", "misconception": "monitoring-tools" },
+        "c": { "why": "Service Health tells you about Azure outages and planned maintenance that affect your resources.", "misconception": "monitoring-tools" },
+        "d": { "why": "Azure Arc extends Azure management to servers and resources outside Azure.", "misconception": "monitoring-tools" }
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/azure/advisor/advisor-overview"
+    }
+  ]
+}
