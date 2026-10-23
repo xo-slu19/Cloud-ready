@@ -22,10 +22,15 @@ export class ApiError extends Error {
 
 async function request(path, { method = 'GET', body, learnerId, signal } = {}) {
   let response;
+  const timeoutController = new AbortController();
+  const timeout = method === 'GET' ? 75_000 : 0;
+  const timeoutId = timeout ? globalThis.setTimeout(() => timeoutController.abort(), timeout) : null;
+  const abortFromCaller = () => timeoutController.abort();
+  signal?.addEventListener('abort', abortFromCaller, { once: true });
   try {
     response = await fetch(`${API_BASE_URL}${path}`, {
       method,
-      signal,
+      signal: timeoutController.signal,
       headers: {
         ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
         ...(learnerId ? { 'X-Learner-Id': learnerId } : {}),
@@ -33,8 +38,14 @@ async function request(path, { method = 'GET', body, learnerId, signal } = {}) {
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   } catch (error) {
-    if (error.name === 'AbortError') throw error;
+    if (error.name === 'AbortError') {
+      if (signal?.aborted) throw error;
+      throw new ApiError('The server is taking longer than expected to respond. It may be waking up; wait a moment and retry.', 0, 'TIMEOUT');
+    }
     throw new ApiError('The quiz server could not be reached. Check that the backend is running and try again.', 0, 'NETWORK_ERROR');
+  } finally {
+    if (timeoutId !== null) globalThis.clearTimeout(timeoutId);
+    signal?.removeEventListener('abort', abortFromCaller);
   }
 
   let payload;

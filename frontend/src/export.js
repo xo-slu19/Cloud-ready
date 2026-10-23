@@ -2,7 +2,7 @@ export const DISCLAIMER = 'This is an unofficial AZ-900 practice tool. It is not
 
 export function buildResultsExport(results, quiz, exportedAt = new Date().toISOString()) {
   return {
-    application: 'AZ-900 Smart Quiz Builder',
+    application: 'CloudReady',
     disclaimer: DISCLAIMER,
     sessionId: results.sessionId,
     exportedAt,
@@ -16,8 +16,8 @@ export function buildResultsExport(results, quiz, exportedAt = new Date().toISOS
       luckyGuesses: results.luckyGuesses,
     },
     readiness: results.readiness,
-    domains: quiz.domains,
-    topics: quiz.topics,
+    domains: quiz.selectionAvailable === false ? null : quiz.domains,
+    topics: quiz.selectionAvailable === false ? null : quiz.topics,
     byDomain: results.byDomain,
     answers: results.review,
     misconceptions: results.misconceptions,

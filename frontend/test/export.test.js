@@ -30,3 +30,12 @@ test('results export serializes the real review, filters and summary without lea
   assert.equal(parsed.disclaimer.includes('not affiliated'), true);
   assert.equal('learnerId' in parsed, false);
 });
+
+test('history exports do not label covered domains and topics as learner-selected filters', () => {
+  const historyExport = buildResultsExport(
+    { sessionId: 'session-history', totalQuestions: 0, answered: 0, correct: 0, percent: null, review: [] },
+    { domains: ['cloud-concepts'], topics: ['Shared responsibility model'], selectionAvailable: false },
+  );
+  assert.equal(historyExport.domains, null);
+  assert.equal(historyExport.topics, null);
+});
