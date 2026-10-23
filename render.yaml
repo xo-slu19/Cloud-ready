@@ -1,0 +1,13 @@
+# Render Blueprint – AZ-900 Smart Quiz Builder (Unofficial)
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: cloud-ready
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
