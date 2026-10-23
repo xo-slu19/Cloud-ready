@@ -46,6 +46,20 @@ test('health check responds', async () => {
   assert.equal(res.body.questions, bank.questionCount);
 });
 
+test('metrics endpoint returns API request statistics', async () => {
+  const res = await api('GET', '/metrics');
+
+  assert.equal(res.status, 200);
+  assert.equal(typeof res.body.startedAt, 'string');
+  assert.equal(typeof res.body.totalRequests, 'number');
+  assert.equal(typeof res.body.totalResponseTimeMs, 'number');
+  assert.equal(typeof res.body.averageResponseTimeMs, 'number');
+  assert.equal(typeof res.body.byMethod, 'object');
+  assert.equal(typeof res.body.byStatus, 'object');
+
+  assert.ok(res.body.totalRequests >= 1);
+});
+
 test('topics lists the three AZ-900 domains with the unofficial notice', async () => {
   const res = await api('GET', '/topics');
   assert.equal(res.status, 200);
@@ -289,4 +303,45 @@ test('links and difficulty are optional in the question bank', () => {
   });
   assert.equal(bankWithoutLinks.questionCount, 1);
   assert.equal(bankWithoutLinks.getQuestion('q1').learnMoreUrl, undefined);
+});
+
+test('rate limiting blocks excessive requests but allows health and metrics', async () => {
+  const app = createApp({
+    bank,
+    store: createMemoryStore(),
+    rateLimitMax: 2,
+    rateLimitWindowMs: 60_000,
+  });
+
+  const testServer = app.listen(0);
+  await new Promise((resolve) => testServer.once('listening', resolve));
+
+  const testBaseUrl = `http://127.0.0.1:${testServer.address().port}/api`;
+
+  try {
+    // The first two requests should be allowed.
+    const first = await fetch(`${testBaseUrl}/topics`);
+    assert.equal(first.status, 200);
+
+    const second = await fetch(`${testBaseUrl}/topics`);
+    assert.equal(second.status, 200);
+
+    // The third request should be blocked.
+    const third = await fetch(`${testBaseUrl}/topics`);
+    assert.equal(third.status, 429);
+
+    const thirdBody = await third.json();
+    assert.equal(thirdBody.error.code, 'RATE_LIMIT_EXCEEDED');
+
+    // Health and metrics endpoints should remain accessible.
+    const health = await fetch(`${testBaseUrl}/health`);
+    assert.equal(health.status, 200);
+
+    const metrics = await fetch(`${testBaseUrl}/metrics`);
+    assert.equal(metrics.status, 200);
+  } finally {
+    await new Promise((resolve, reject) => {
+      testServer.close((err) => (err ? reject(err) : resolve()));
+    });
+  }
 });
