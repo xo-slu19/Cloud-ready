@@ -1,0 +1,4074 @@
+{
+  "domains": [
+    {
+      "id": "cloud-concepts",
+      "name": "Describe cloud concepts",
+      "examWeight": {
+        "min": 25,
+        "max": 30
+      },
+      "learningPath": "https://learn.microsoft.com/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
+    },
+    {
+      "id": "architecture-services",
+      "name": "Describe Azure architecture and services",
+      "examWeight": {
+        "min": 35,
+        "max": 40
+      },
+      "learningPath": "https://learn.microsoft.com/training/paths/azure-fundamentals-describe-azure-architecture-services/"
+    },
+    {
+      "id": "management-governance",
+      "name": "Describe Azure management and governance",
+      "examWeight": {
+        "min": 30,
+        "max": 35
+      },
+      "learningPath": "https://learn.microsoft.com/training/paths/describe-azure-management-governance/"
+    }
+  ],
+  "misconceptions": {
+    "shared-responsibility": "Misunderstanding who is responsible for what in the cloud",
+    "capex-vs-opex": "Mixing up capital and operational expenditure",
+    "consumption-model": "Misunderstanding the consumption-based (pay-as-you-go) model",
+    "cloud-myths": "Believing common myths about the cloud (no servers, no cost, nothing to manage)",
+    "cloud-models": "Mixing up public, private and hybrid cloud",
+    "service-types": "Mixing up IaaS, PaaS and SaaS",
+    "cloud-benefits": "Mixing up the benefits of the cloud (availability, reliability, predictability, agility)",
+    "scaling-types": "Mixing up scaling up, scaling out and elasticity",
+    "regions-and-zones": "Mixing up regions, region pairs and availability zones",
+    "resource-hierarchy": "Mixing up resources, resource groups, subscriptions and management groups",
+    "service-purpose": "Mixing up what different Azure services are for",
+    "networking-services": "Misunderstanding Azure networking services",
+    "storage-services": "Mixing up Azure storage services and access tiers",
+    "storage-redundancy": "Mixing up storage redundancy options (LRS, ZRS, GRS)",
+    "data-services": "Mixing up Azure database and data services",
+    "identity-security": "Misunderstanding identity and security principles",
+    "governance-tools": "Mixing up governance tools (policy, locks, tags)",
+    "cost-tools": "Mixing up the cost tools (pricing calculator, TCO calculator, Cost Management)",
+    "pricing-options": "Mixing up ways to reduce Azure costs (reservations, Spot VMs, Hybrid Benefit)",
+    "management-tools": "Mixing up the tools for managing Azure (portal, CLI, PowerShell, Cloud Shell, Arc)",
+    "monitoring-tools": "Mixing up Azure Monitor, Service Health, Advisor and alerts",
+    "sla-basics": "Misunderstanding SLAs and preview services"
+  },
+  "questions": [
+    {
+      "id": "AZ001",
+      "domain": "cloud-concepts",
+      "topic": "Cloud computing basics",
+      "difficulty": "Beginner",
+      "question": "What best describes cloud computing?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Delivering computing services such as servers, storage and databases over the internet"
+        },
+        {
+          "id": "b",
+          "text": "Storing every file only on one personal laptop"
+        },
+        {
+          "id": "c",
+          "text": "Building a physical data centre inside your own home"
+        },
+        {
+          "id": "d",
+          "text": "Using a computer that is never connected to a network"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Cloud computing provides on-demand access to computing resources over a network, usually the internet, so you do not need to own and run all the hardware yourself.",
+      "wrongChoices": {
+        "b": {
+          "why": "Keeping files on one laptop is local storage. Cloud computing delivers services over a network, usually the internet."
+        },
+        "c": {
+          "why": "Building your own data centre means owning the hardware, which is the opposite of renting computing services from a provider."
+        },
+        "d": {
+          "why": "Cloud services are reached over a network, so a computer that is never connected cannot use them."
+        }
+      }
+    },
+    {
+      "id": "AZ002",
+      "domain": "cloud-concepts",
+      "topic": "CapEx and OpEx",
+      "difficulty": "Beginner",
+      "question": "When a company moves from buying its own servers to using cloud services, which spending model does it mainly shift toward?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Capital expenditure (CapEx) only"
+        },
+        {
+          "id": "b",
+          "text": "Operational expenditure (OpEx)"
+        },
+        {
+          "id": "c",
+          "text": "Fixed one-time purchase only"
+        },
+        {
+          "id": "d",
+          "text": "No spending at all"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Cloud services are typically paid for as ongoing usage costs (OpEx) instead of large upfront hardware purchases (CapEx).",
+      "wrongChoices": {
+        "a": {
+          "why": "CapEx is the large upfront purchase of hardware, which is exactly what moving to the cloud moves away from.",
+          "misconception": "capex-vs-opex"
+        },
+        "c": {
+          "why": "Cloud services are billed on an ongoing basis according to use, not as a single purchase.",
+          "misconception": "consumption-model"
+        },
+        "d": {
+          "why": "The cloud still costs money. You pay for what you use instead of buying hardware upfront.",
+          "misconception": "cloud-myths"
+        }
+      }
+    },
+    {
+      "id": "AZ003",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Beginner",
+      "question": "Which term describes a service remaining accessible and running with minimal downtime?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Portability"
+        },
+        {
+          "id": "b",
+          "text": "Archiving"
+        },
+        {
+          "id": "c",
+          "text": "High availability"
+        },
+        {
+          "id": "d",
+          "text": "Encryption"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "High availability means designing a service so it stays up and reachable as much of the time as possible.",
+      "wrongChoices": {
+        "a": {
+          "why": "Portability is about moving workloads or data between environments, not about staying online.",
+          "misconception": "cloud-benefits"
+        },
+        "b": {
+          "why": "Archiving stores old data cheaply for the long term. It does not keep a service running."
+        },
+        "d": {
+          "why": "Encryption protects data from being read by others. It does not keep a service available."
+        }
+      }
+    },
+    {
+      "id": "AZ004",
+      "domain": "cloud-concepts",
+      "topic": "Scalability and elasticity",
+      "difficulty": "Beginner",
+      "question": "What does scalability mean in the cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Making applications look bigger on screen"
+        },
+        {
+          "id": "b",
+          "text": "Copying data to a USB drive"
+        },
+        {
+          "id": "c",
+          "text": "Turning off services at night"
+        },
+        {
+          "id": "d",
+          "text": "The ability to increase or decrease resources to meet demand"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Scalability lets you add or remove resources such as compute power or storage as workload needs change.",
+      "wrongChoices": {
+        "a": {
+          "why": "Scalability is about computing capacity, not how an application looks on screen."
+        },
+        "b": {
+          "why": "Copying data to a USB drive is a manual backup, not adjusting resources to demand."
+        },
+        "c": {
+          "why": "Turning services off can save money, but scalability means adjusting resources up or down to match demand.",
+          "misconception": "scaling-types"
+        }
+      }
+    },
+    {
+      "id": "AZ005",
+      "domain": "cloud-concepts",
+      "topic": "Scalability and elasticity",
+      "difficulty": "Intermediate",
+      "question": "Which feature best describes elasticity?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Permanently reserving a fixed number of servers"
+        },
+        {
+          "id": "b",
+          "text": "Automatically adding and removing resources as demand rises and falls"
+        },
+        {
+          "id": "c",
+          "text": "Backing up data every year"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting all stored files"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Elasticity is automatic scaling out and in with demand, so you only run what you need at a given time.",
+      "wrongChoices": {
+        "a": {
+          "why": "A fixed number of reserved servers cannot grow or shrink with demand, which is the opposite of elasticity.",
+          "misconception": "scaling-types"
+        },
+        "c": {
+          "why": "Backups protect data. Elasticity is about automatically matching resources to demand."
+        },
+        "d": {
+          "why": "Encryption protects data. It has nothing to do with adjusting resources to demand."
+        }
+      }
+    },
+    {
+      "id": "AZ006",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Beginner",
+      "question": "Which cloud benefit refers to a system's ability to recover from failures and keep working?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Reliability"
+        },
+        {
+          "id": "b",
+          "text": "Predictability"
+        },
+        {
+          "id": "c",
+          "text": "Agility"
+        },
+        {
+          "id": "d",
+          "text": "Portability"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Reliability is the ability of a system to recover from failures and continue to function.",
+      "wrongChoices": {
+        "b": {
+          "why": "Predictability is about forecasting performance and costs, not recovering from failures.",
+          "misconception": "cloud-benefits"
+        },
+        "c": {
+          "why": "Agility is about how quickly you can deploy and change resources.",
+          "misconception": "cloud-benefits"
+        },
+        "d": {
+          "why": "Portability is about moving workloads between environments.",
+          "misconception": "cloud-benefits"
+        }
+      }
+    },
+    {
+      "id": "AZ007",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Intermediate",
+      "question": "A finance team wants to forecast cloud costs and performance accurately in advance. Which cloud benefit supports this?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Elasticity"
+        },
+        {
+          "id": "b",
+          "text": "Disaster recovery"
+        },
+        {
+          "id": "c",
+          "text": "Predictability"
+        },
+        {
+          "id": "d",
+          "text": "Fault tolerance"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Predictability covers both performance and cost, helping organizations plan and forecast what they will need and spend.",
+      "wrongChoices": {
+        "a": {
+          "why": "Elasticity automatically adjusts resources to demand. It helps control costs but is not about forecasting them.",
+          "misconception": "cloud-benefits"
+        },
+        "b": {
+          "why": "Disaster recovery is about restoring services after an outage, not forecasting costs.",
+          "misconception": "cloud-benefits"
+        },
+        "d": {
+          "why": "Fault tolerance keeps a system running when parts fail. It does not help forecast costs.",
+          "misconception": "cloud-benefits"
+        }
+      }
+    },
+    {
+      "id": "AZ008",
+      "domain": "cloud-concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": "Intermediate",
+      "question": "In an Infrastructure as a Service (IaaS) deployment, who is responsible for patching the guest operating system?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Microsoft only"
+        },
+        {
+          "id": "b",
+          "text": "The internet provider"
+        },
+        {
+          "id": "c",
+          "text": "Nobody, it is automatic"
+        },
+        {
+          "id": "d",
+          "text": "The customer"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "In IaaS the provider manages the physical infrastructure, while the customer manages the operating system, applications and data.",
+      "wrongChoices": {
+        "a": {
+          "why": "In IaaS, Microsoft manages the physical hosts, network and datacenter, but not the operating system inside your VM.",
+          "misconception": "shared-responsibility"
+        },
+        "b": {
+          "why": "Your internet provider only supplies your connection. It has no access to your Azure VMs."
+        },
+        "c": {
+          "why": "Update tools exist, but someone has to set them up and manage them. In IaaS that is the customer.",
+          "misconception": "cloud-myths"
+        }
+      }
+    },
+    {
+      "id": "AZ009",
+      "domain": "cloud-concepts",
+      "topic": "Cloud models",
+      "difficulty": "Beginner",
+      "question": "Which description fits a public cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Services owned and operated by a cloud provider and shared across multiple customers"
+        },
+        {
+          "id": "b",
+          "text": "Servers used by only one company inside its own building"
+        },
+        {
+          "id": "c",
+          "text": "A cloud that is accessible to nobody"
+        },
+        {
+          "id": "d",
+          "text": "A cloud that works only without internet"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "A public cloud is owned and operated by a provider, with resources shared among many customers on isolated tenants.",
+      "wrongChoices": {
+        "b": {
+          "why": "Servers used only by one company in its own building describe a private cloud or on-premises datacenter.",
+          "misconception": "cloud-models"
+        },
+        "c": {
+          "why": "A cloud nobody can access would be useless. Public clouds are available to anyone who signs up."
+        },
+        "d": {
+          "why": "Public cloud services are reached over the internet, not without it."
+        }
+      }
+    },
+    {
+      "id": "AZ010",
+      "domain": "cloud-concepts",
+      "topic": "Cloud models",
+      "difficulty": "Beginner",
+      "question": "Which description fits a private cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hardware rented by the hour from a provider by anyone"
+        },
+        {
+          "id": "b",
+          "text": "A free service for the general public"
+        },
+        {
+          "id": "c",
+          "text": "Cloud resources used exclusively by a single organization"
+        },
+        {
+          "id": "d",
+          "text": "A cloud that cannot store data"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "A private cloud is dedicated to one organization and can be hosted in its own datacenter or by a third party.",
+      "wrongChoices": {
+        "a": {
+          "why": "Hardware rented by the hour to anyone describes the public cloud.",
+          "misconception": "cloud-models"
+        },
+        "b": {
+          "why": "A private cloud serves one organization, not the general public, and it is not free.",
+          "misconception": "cloud-models"
+        },
+        "d": {
+          "why": "A private cloud stores data like any other cloud. What makes it private is that only one organization uses it."
+        }
+      }
+    },
+    {
+      "id": "AZ011",
+      "domain": "cloud-concepts",
+      "topic": "Cloud models",
+      "difficulty": "Beginner",
+      "question": "What is a hybrid cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A cloud with only one server"
+        },
+        {
+          "id": "b",
+          "text": "A combination of public and private cloud or on-premises environments working together"
+        },
+        {
+          "id": "c",
+          "text": "A cloud that works only on mobile phones"
+        },
+        {
+          "id": "d",
+          "text": "A cloud that is turned off at night"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Hybrid cloud connects public cloud with private or on-premises resources so they can work together.",
+      "wrongChoices": {
+        "a": {
+          "why": "The number of servers does not define hybrid cloud. Hybrid means combining public cloud with private or on-premises resources.",
+          "misconception": "cloud-models"
+        },
+        "c": {
+          "why": "Hybrid cloud has nothing to do with the type of device people use."
+        },
+        "d": {
+          "why": "Hybrid cloud is about combining environments, not about operating hours."
+        }
+      }
+    },
+    {
+      "id": "AZ012",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "difficulty": "Beginner",
+      "question": "Which is an example of Infrastructure as a Service (IaaS)?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A virtual machine"
+        },
+        {
+          "id": "b",
+          "text": "A word processor delivered in a browser"
+        },
+        {
+          "id": "c",
+          "text": "An email subscription service"
+        },
+        {
+          "id": "d",
+          "text": "A printed manual"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Virtual machines give you raw compute infrastructure that you configure and manage, which is the IaaS model.",
+      "wrongChoices": {
+        "b": {
+          "why": "Ready-to-use software in a browser is SaaS, not IaaS.",
+          "misconception": "service-types"
+        },
+        "c": {
+          "why": "An email service you subscribe to is SaaS: finished software, not infrastructure.",
+          "misconception": "service-types"
+        },
+        "d": {
+          "why": "A printed manual is not a cloud service at all."
+        }
+      }
+    },
+    {
+      "id": "AZ013",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "difficulty": "Beginner",
+      "question": "Which is an example of Platform as a Service (PaaS)?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A physical server in your office"
+        },
+        {
+          "id": "b",
+          "text": "A subscription to a hosted email product"
+        },
+        {
+          "id": "c",
+          "text": "A virtual machine you manage fully"
+        },
+        {
+          "id": "d",
+          "text": "Azure App Service hosting a web app"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "PaaS lets you deploy applications while the provider manages the underlying servers, operating system and runtime.",
+      "wrongChoices": {
+        "a": {
+          "why": "A physical server in your own office is on-premises, not a cloud service."
+        },
+        "b": {
+          "why": "A hosted email product is SaaS: finished software you use, not a platform you deploy your own apps to.",
+          "misconception": "service-types"
+        },
+        "c": {
+          "why": "A virtual machine you manage fully is IaaS, because you look after its operating system.",
+          "misconception": "service-types"
+        }
+      }
+    },
+    {
+      "id": "AZ014",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "difficulty": "Beginner",
+      "question": "Which is an example of Software as a Service (SaaS)?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A raw virtual network"
+        },
+        {
+          "id": "b",
+          "text": "Microsoft 365 email and office apps used through a subscription"
+        },
+        {
+          "id": "c",
+          "text": "A bare-metal server"
+        },
+        {
+          "id": "d",
+          "text": "A storage cable"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "SaaS delivers complete, ready-to-use software; the provider manages almost everything.",
+      "wrongChoices": {
+        "a": {
+          "why": "A virtual network is infrastructure you configure yourself, which is IaaS.",
+          "misconception": "service-types"
+        },
+        "c": {
+          "why": "A bare-metal server is raw infrastructure, not finished software.",
+          "misconception": "service-types"
+        },
+        "d": {
+          "why": "A cable is physical hardware, not a cloud service."
+        }
+      }
+    },
+    {
+      "id": "AZ015",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "difficulty": "Intermediate",
+      "question": "What best describes serverless computing?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Computing with no servers existing anywhere"
+        },
+        {
+          "id": "b",
+          "text": "Computing that works only offline"
+        },
+        {
+          "id": "c",
+          "text": "Running code without managing the servers, with the provider handling infrastructure and scaling"
+        },
+        {
+          "id": "d",
+          "text": "Computing that requires owning hardware"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Serverless still uses servers, but the provider manages them so developers focus on code. Azure Functions is an example.",
+      "wrongChoices": {
+        "a": {
+          "why": "Serverless still runs on servers. You just do not manage them; the provider does.",
+          "misconception": "cloud-myths"
+        },
+        "b": {
+          "why": "Serverless code runs in the cloud and is usually triggered over the network, so it is not offline."
+        },
+        "d": {
+          "why": "With serverless, the provider owns and manages the hardware, not you.",
+          "misconception": "service-types"
+        }
+      }
+    },
+    {
+      "id": "AZ016",
+      "domain": "cloud-concepts",
+      "topic": "Consumption-based model",
+      "difficulty": "Beginner",
+      "question": "What does the consumption-based pricing model mean?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "You pay for the resources you actually use"
+        },
+        {
+          "id": "b",
+          "text": "You pay a fixed fee regardless of use"
+        },
+        {
+          "id": "c",
+          "text": "You pay only for hardware"
+        },
+        {
+          "id": "d",
+          "text": "You never pay"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Consumption-based pricing means you pay for what you use, with no large upfront cost.",
+      "wrongChoices": {
+        "b": {
+          "why": "A fixed fee regardless of usage is the opposite of consumption-based pricing.",
+          "misconception": "consumption-model"
+        },
+        "c": {
+          "why": "With consumption-based pricing you pay for the services you use, not for buying hardware.",
+          "misconception": "consumption-model"
+        },
+        "d": {
+          "why": "Cloud services are not free. You pay for what you use.",
+          "misconception": "cloud-myths"
+        }
+      }
+    },
+    {
+      "id": "AZ017",
+      "domain": "cloud-concepts",
+      "topic": "Consumption-based model",
+      "difficulty": "Intermediate",
+      "question": "Why can large cloud providers often offer lower prices per unit than a small company running its own datacenter?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "They avoid using electricity"
+        },
+        {
+          "id": "b",
+          "text": "They use only second-hand hardware"
+        },
+        {
+          "id": "c",
+          "text": "They do not pay taxes"
+        },
+        {
+          "id": "d",
+          "text": "Economies of scale from buying and operating resources in very large quantities"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Providers purchase and operate at massive scale, which lowers cost per unit and can be passed on to customers.",
+      "wrongChoices": {
+        "a": {
+          "why": "Datacenters use huge amounts of electricity. Providers save through scale, not by avoiding it."
+        },
+        "b": {
+          "why": "Providers run modern hardware. Lower prices come from buying and operating at very large scale."
+        },
+        "c": {
+          "why": "Lower prices come from economies of scale, not from avoiding taxes."
+        }
+      }
+    },
+    {
+      "id": "AZ018",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Beginner",
+      "question": "A startup needs to launch a test environment in minutes instead of weeks. Which cloud benefit does this show?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hardware ownership"
+        },
+        {
+          "id": "b",
+          "text": "Speed and agility of provisioning"
+        },
+        {
+          "id": "c",
+          "text": "Manual installation"
+        },
+        {
+          "id": "d",
+          "text": "Longer procurement cycles"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Cloud resources can be provisioned quickly on demand, helping teams move faster.",
+      "wrongChoices": {
+        "a": {
+          "why": "Owning hardware is what slows teams down. The cloud lets you use resources without buying them.",
+          "misconception": "cloud-benefits"
+        },
+        "c": {
+          "why": "Manual installation takes time. The benefit here is fast, on-demand provisioning."
+        },
+        "d": {
+          "why": "Long procurement cycles are the problem the cloud solves, not the benefit."
+        }
+      }
+    },
+    {
+      "id": "AZ019",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Intermediate",
+      "question": "What is the main purpose of disaster recovery in the cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "To make applications run faster"
+        },
+        {
+          "id": "b",
+          "text": "To reduce the number of users"
+        },
+        {
+          "id": "c",
+          "text": "To restore services and data after an outage or disaster"
+        },
+        {
+          "id": "d",
+          "text": "To remove the need for backups"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Disaster recovery plans and tools help an organization restore operations and data after a serious disruption.",
+      "wrongChoices": {
+        "a": {
+          "why": "Performance is a separate concern. Disaster recovery is about restoring services after a serious disruption.",
+          "misconception": "cloud-benefits"
+        },
+        "b": {
+          "why": "Disaster recovery aims to keep serving users, not to reduce them."
+        },
+        "d": {
+          "why": "Disaster recovery depends on backups and replicas. It does not replace them.",
+          "misconception": "cloud-myths"
+        }
+      }
+    },
+    {
+      "id": "AZ020",
+      "domain": "cloud-concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": "Intermediate",
+      "question": "Under the shared responsibility model, which responsibility always stays with the customer regardless of service type?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Their data and who has access to it"
+        },
+        {
+          "id": "b",
+          "text": "The physical datacenter building"
+        },
+        {
+          "id": "c",
+          "text": "The physical network cables"
+        },
+        {
+          "id": "d",
+          "text": "The power supply of the datacenter"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Customers are always responsible for their data, identities and access, even when using SaaS.",
+      "wrongChoices": {
+        "b": {
+          "why": "The physical datacenter building is always the cloud provider's responsibility.",
+          "misconception": "shared-responsibility"
+        },
+        "c": {
+          "why": "Physical network cables are always managed by the cloud provider.",
+          "misconception": "shared-responsibility"
+        },
+        "d": {
+          "why": "Datacenter power is always the cloud provider's job.",
+          "misconception": "shared-responsibility"
+        }
+      }
+    },
+    {
+      "id": "AZ021",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Intermediate",
+      "question": "What does fault tolerance mean?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ignoring errors in code"
+        },
+        {
+          "id": "b",
+          "text": "Making users tolerate slow service"
+        },
+        {
+          "id": "c",
+          "text": "Deleting failed servers"
+        },
+        {
+          "id": "d",
+          "text": "A system continuing to operate even when some of its components fail"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "A fault-tolerant system keeps running when a component fails, usually through redundancy.",
+      "wrongChoices": {
+        "a": {
+          "why": "Ignoring errors does not keep a system running. Fault tolerance relies on redundant components."
+        },
+        "b": {
+          "why": "Fault tolerance is about the system tolerating failures, not users tolerating poor service."
+        },
+        "c": {
+          "why": "Removing a failed server is not enough on its own. Fault tolerance means other components take over so the system keeps working.",
+          "misconception": "cloud-benefits"
+        }
+      }
+    },
+    {
+      "id": "AZ022",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Beginner",
+      "question": "A business in Kenya wants customers in Europe to get fast access to its application. Which cloud benefit helps most?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A single local server"
+        },
+        {
+          "id": "b",
+          "text": "Global reach through datacenters in many regions"
+        },
+        {
+          "id": "c",
+          "text": "Printed brochures"
+        },
+        {
+          "id": "d",
+          "text": "Smaller screens"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Cloud providers operate datacenters worldwide, letting you deploy close to your users.",
+      "wrongChoices": {
+        "a": {
+          "why": "One server in Kenya would be far from users in Europe, which makes access slower.",
+          "misconception": "cloud-benefits"
+        },
+        "c": {
+          "why": "Brochures do not affect how fast an application responds."
+        },
+        "d": {
+          "why": "Screen size has nothing to do with application speed."
+        }
+      }
+    },
+    {
+      "id": "AZ023",
+      "domain": "cloud-concepts",
+      "topic": "Benefits of the cloud",
+      "difficulty": "Beginner",
+      "question": "Which is a security benefit of using a major cloud provider?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "You no longer need passwords"
+        },
+        {
+          "id": "b",
+          "text": "All data is automatically public"
+        },
+        {
+          "id": "c",
+          "text": "The provider invests heavily in physical datacenter security and security tooling"
+        },
+        {
+          "id": "d",
+          "text": "Customers cannot be attacked"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Providers protect datacenters physically and offer security tools, but customers still share responsibility for secure configuration.",
+      "wrongChoices": {
+        "a": {
+          "why": "Passwords and identity protection are still needed. Security in the cloud is shared.",
+          "misconception": "shared-responsibility"
+        },
+        "b": {
+          "why": "Cloud data is private by default unless you choose to share it.",
+          "misconception": "cloud-myths"
+        },
+        "d": {
+          "why": "No system is immune to attack. Customers still need to configure their resources securely.",
+          "misconception": "shared-responsibility"
+        }
+      }
+    },
+    {
+      "id": "AZ024",
+      "domain": "cloud-concepts",
+      "topic": "Cloud models",
+      "difficulty": "Intermediate",
+      "question": "Which scenario is a good reason to choose a hybrid cloud?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Keeping sensitive data on-premises while using the public cloud for extra capacity"
+        },
+        {
+          "id": "b",
+          "text": "Wanting to stop using all networks"
+        },
+        {
+          "id": "c",
+          "text": "Avoiding every form of backup"
+        },
+        {
+          "id": "d",
+          "text": "Using only printed records"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Hybrid cloud lets organizations keep regulated or sensitive workloads local while still using cloud scale for other needs.",
+      "wrongChoices": {
+        "b": {
+          "why": "Hybrid cloud depends on networks to connect on-premises and cloud resources."
+        },
+        "c": {
+          "why": "Hybrid cloud has nothing to do with avoiding backups, which every organization needs."
+        },
+        "d": {
+          "why": "Printed records are not a cloud model at all."
+        }
+      }
+    },
+    {
+      "id": "AZ025",
+      "domain": "cloud-concepts",
+      "topic": "Scalability and elasticity",
+      "difficulty": "Intermediate",
+      "question": "An online shop expects a huge traffic spike during a holiday sale and a quiet period afterwards. Which cloud capability fits best?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Buying servers sized for the peak permanently"
+        },
+        {
+          "id": "b",
+          "text": "Closing the shop in the busy season"
+        },
+        {
+          "id": "c",
+          "text": "Using fewer customers"
+        },
+        {
+          "id": "d",
+          "text": "Scaling resources out for the spike and back in afterwards"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Elastic scaling lets you add resources for peak demand and release them later, reducing wasted cost.",
+      "wrongChoices": {
+        "a": {
+          "why": "Servers sized for the peak sit idle the rest of the year, wasting money. The cloud lets you scale only when needed.",
+          "misconception": "scaling-types"
+        },
+        "b": {
+          "why": "Closing during the busiest period would lose sales. Scaling handles the extra demand instead."
+        },
+        "c": {
+          "why": "The goal is to serve every customer by adding resources when demand rises."
+        }
+      }
+    },
+    {
+      "id": "AZ026",
+      "domain": "cloud-concepts",
+      "topic": "Cloud service types",
+      "difficulty": "Intermediate",
+      "question": "Compared with IaaS, what does the provider additionally manage in PaaS?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The customer's data content"
+        },
+        {
+          "id": "b",
+          "text": "The operating system and runtime environment"
+        },
+        {
+          "id": "c",
+          "text": "The customer's passwords"
+        },
+        {
+          "id": "d",
+          "text": "The customer's business decisions"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "In PaaS the provider also manages the operating system and runtime so you focus on applications and data.",
+      "wrongChoices": {
+        "a": {
+          "why": "Your data is always your responsibility, in every service type.",
+          "misconception": "shared-responsibility"
+        },
+        "c": {
+          "why": "Managing your users' credentials and access stays with you.",
+          "misconception": "shared-responsibility"
+        },
+        "d": {
+          "why": "Business decisions are never the cloud provider's responsibility."
+        }
+      }
+    },
+    {
+      "id": "AZ027",
+      "domain": "cloud-concepts",
+      "topic": "Scalability and elasticity",
+      "difficulty": "Intermediate",
+      "question": "What is vertical scaling?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Adding more machines to share the load"
+        },
+        {
+          "id": "b",
+          "text": "Moving servers to a taller building"
+        },
+        {
+          "id": "c",
+          "text": "Adding more CPU or memory to an existing resource"
+        },
+        {
+          "id": "d",
+          "text": "Deleting unused servers"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Vertical scaling (scaling up) increases the power of an existing resource, such as a larger VM size.",
+      "wrongChoices": {
+        "a": {
+          "why": "Adding more machines is horizontal scaling (scaling out).",
+          "misconception": "scaling-types"
+        },
+        "b": {
+          "why": "Vertical scaling is about the size of a resource, not the height of a building."
+        },
+        "d": {
+          "why": "Deleting servers removes resources, but vertical scaling changes the size of an existing resource.",
+          "misconception": "scaling-types"
+        }
+      }
+    },
+    {
+      "id": "AZ028",
+      "domain": "cloud-concepts",
+      "topic": "Scalability and elasticity",
+      "difficulty": "Intermediate",
+      "question": "What is horizontal scaling?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Adding more instances of a resource to share the workload"
+        },
+        {
+          "id": "b",
+          "text": "Making one server physically wider"
+        },
+        {
+          "id": "c",
+          "text": "Reducing network speed"
+        },
+        {
+          "id": "d",
+          "text": "Rewriting an application in a new language"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Horizontal scaling (scaling out) adds more instances, such as additional VMs, to handle more load.",
+      "wrongChoices": {
+        "b": {
+          "why": "Horizontal scaling adds more instances. It does not change a server's physical size.",
+          "misconception": "scaling-types"
+        },
+        "c": {
+          "why": "Reducing network speed makes things slower and is not scaling."
+        },
+        "d": {
+          "why": "Rewriting code is not scaling. Scaling changes the resources that run the application."
+        }
+      }
+    },
+    {
+      "id": "AZ029",
+      "domain": "architecture-services",
+      "topic": "Regions and availability zones",
+      "difficulty": "Beginner",
+      "question": "What is an Azure region?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A single server rack"
+        },
+        {
+          "id": "b",
+          "text": "A set of datacenters deployed within a latency-defined area and connected by a low-latency network"
+        },
+        {
+          "id": "c",
+          "text": "A user account type"
+        },
+        {
+          "id": "d",
+          "text": "A billing report"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "A region is a geographic area containing one or more datacenters where you can deploy resources.",
+      "wrongChoices": {
+        "a": {
+          "why": "A rack is a tiny part of one datacenter. A region contains one or more whole datacenters.",
+          "misconception": "regions-and-zones"
+        },
+        "c": {
+          "why": "Regions are physical locations, not account types."
+        },
+        "d": {
+          "why": "A region is a geographic area where resources run, not a report."
+        }
+      }
+    },
+    {
+      "id": "AZ030",
+      "domain": "architecture-services",
+      "topic": "Regions and availability zones",
+      "difficulty": "Beginner",
+      "question": "What are Azure availability zones?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Time zones for billing"
+        },
+        {
+          "id": "b",
+          "text": "Email groups for administrators"
+        },
+        {
+          "id": "c",
+          "text": "Pricing tiers"
+        },
+        {
+          "id": "d",
+          "text": "Physically separate locations within a region, each with independent power, cooling and networking"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Availability zones protect applications from datacenter-level failures by spreading resources across separate locations in a region.",
+      "wrongChoices": {
+        "a": {
+          "why": "Availability zones are physical locations, not time zones.",
+          "misconception": "regions-and-zones"
+        },
+        "b": {
+          "why": "Availability zones are datacenter locations, not email groups."
+        },
+        "c": {
+          "why": "Pricing tiers set cost and features. Availability zones are separate physical locations in a region."
+        }
+      }
+    },
+    {
+      "id": "AZ031",
+      "domain": "architecture-services",
+      "topic": "Regions and availability zones",
+      "difficulty": "Intermediate",
+      "question": "What is the main purpose of Azure region pairs?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Supporting disaster recovery by pairing regions in the same geography"
+        },
+        {
+          "id": "b",
+          "text": "Offering two prices for one service"
+        },
+        {
+          "id": "c",
+          "text": "Pairing two users to one account"
+        },
+        {
+          "id": "d",
+          "text": "Combining two subscriptions"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Each region is paired with another in the same geography so some services can replicate data and recover from large-scale disasters.",
+      "wrongChoices": {
+        "b": {
+          "why": "Region pairs are about disaster recovery, not pricing.",
+          "misconception": "regions-and-zones"
+        },
+        "c": {
+          "why": "Region pairs link two regions, not two users."
+        },
+        "d": {
+          "why": "Subscriptions are billing and access boundaries. Region pairs link two regions for recovery.",
+          "misconception": "resource-hierarchy"
+        }
+      }
+    },
+    {
+      "id": "AZ032",
+      "domain": "architecture-services",
+      "topic": "Resource hierarchy",
+      "difficulty": "Beginner",
+      "question": "What is an Azure resource group?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A type of virtual machine"
+        },
+        {
+          "id": "b",
+          "text": "A billing invoice"
+        },
+        {
+          "id": "c",
+          "text": "A logical container that holds related Azure resources"
+        },
+        {
+          "id": "d",
+          "text": "A security password"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Resource groups organize related resources so they can be managed, deployed and deleted together.",
+      "wrongChoices": {
+        "a": {
+          "why": "A virtual machine is a resource that lives inside a resource group.",
+          "misconception": "resource-hierarchy"
+        },
+        "b": {
+          "why": "Invoices come from your billing account. A resource group organizes resources.",
+          "misconception": "resource-hierarchy"
+        },
+        "d": {
+          "why": "A resource group is a container for resources, not a credential."
+        }
+      }
+    },
+    {
+      "id": "AZ033",
+      "domain": "architecture-services",
+      "topic": "Resource hierarchy",
+      "difficulty": "Beginner",
+      "question": "What is an Azure subscription?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A magazine for Azure users"
+        },
+        {
+          "id": "b",
+          "text": "A unit that provides a boundary for billing and access to Azure resources"
+        },
+        {
+          "id": "c",
+          "text": "A type of storage disk"
+        },
+        {
+          "id": "d",
+          "text": "A virtual network"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "A subscription links to an account and provides authenticated access to resources, along with billing boundaries.",
+      "wrongChoices": {
+        "a": {
+          "why": "A subscription is an Azure billing and access boundary, not a publication."
+        },
+        "c": {
+          "why": "A disk is a resource. A subscription is the boundary that contains resources.",
+          "misconception": "resource-hierarchy"
+        },
+        "d": {
+          "why": "A virtual network is a resource that lives inside a subscription.",
+          "misconception": "resource-hierarchy"
+        }
+      }
+    },
+    {
+      "id": "AZ034",
+      "domain": "architecture-services",
+      "topic": "Resource hierarchy",
+      "difficulty": "Intermediate",
+      "question": "What is the purpose of Azure management groups?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "To organize and apply governance across multiple subscriptions"
+        },
+        {
+          "id": "b",
+          "text": "To manage employees' schedules"
+        },
+        {
+          "id": "c",
+          "text": "To group virtual keyboards"
+        },
+        {
+          "id": "d",
+          "text": "To store files"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Management groups sit above subscriptions, letting you apply policies and access controls to many subscriptions at once.",
+      "wrongChoices": {
+        "b": {
+          "why": "Management groups organize Azure subscriptions, not staff."
+        },
+        "c": {
+          "why": "Management groups have nothing to do with keyboards."
+        },
+        "d": {
+          "why": "Files are stored in storage accounts. Management groups organize subscriptions for governance.",
+          "misconception": "resource-hierarchy"
+        }
+      }
+    },
+    {
+      "id": "AZ035",
+      "domain": "architecture-services",
+      "topic": "Resource hierarchy",
+      "difficulty": "Intermediate",
+      "question": "What is Azure Resource Manager (ARM)?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A printer driver"
+        },
+        {
+          "id": "b",
+          "text": "A hardware monitor"
+        },
+        {
+          "id": "c",
+          "text": "A pricing calculator"
+        },
+        {
+          "id": "d",
+          "text": "The deployment and management service for Azure resources"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "ARM is the management layer that lets you create, update and delete resources through the portal, CLI, PowerShell, SDKs and templates.",
+      "wrongChoices": {
+        "a": {
+          "why": "ARM manages Azure resources, not printers."
+        },
+        "b": {
+          "why": "ARM is a cloud management layer, not a device monitor."
+        },
+        "c": {
+          "why": "Cost estimates come from the pricing calculator. ARM deploys and manages resources.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ036",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Beginner",
+      "question": "Which Azure service lets you run a full operating system in the cloud that you manage yourself?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Key Vault"
+        },
+        {
+          "id": "c",
+          "text": "Azure Virtual Machines"
+        },
+        {
+          "id": "d",
+          "text": "Azure Advisor"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Virtual Machines are IaaS compute resources where you control the operating system and software.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS hosts domain name records. It does not run an operating system.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Key Vault stores secrets and keys. It does not run an operating system.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Advisor gives recommendations. It does not run virtual machines.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ037",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Intermediate",
+      "question": "Which Azure feature automatically creates and manages a group of identical, load-balanced virtual machines?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Virtual machine scale sets"
+        },
+        {
+          "id": "b",
+          "text": "Resource locks"
+        },
+        {
+          "id": "c",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "d",
+          "text": "Azure Advisor"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Scale sets let you deploy identical VMs that can automatically increase or decrease in number with demand.",
+      "wrongChoices": {
+        "b": {
+          "why": "Resource locks protect resources from deletion or changes. They do not create VMs.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Policy enforces rules on resources. It does not create or scale VMs.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Advisor makes recommendations. It does not manage groups of VMs.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ038",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Intermediate",
+      "question": "What do availability sets help protect against?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Billing mistakes"
+        },
+        {
+          "id": "b",
+          "text": "Hardware failures and planned maintenance within a datacenter"
+        },
+        {
+          "id": "c",
+          "text": "Weak passwords"
+        },
+        {
+          "id": "d",
+          "text": "Expired licenses"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Availability sets spread VMs across fault domains and update domains to reduce the impact of hardware faults and maintenance.",
+      "wrongChoices": {
+        "a": {
+          "why": "Availability sets are about keeping VMs running, not about billing."
+        },
+        "c": {
+          "why": "Password strength is handled by identity features, not availability sets."
+        },
+        "d": {
+          "why": "Licensing has nothing to do with availability sets."
+        }
+      }
+    },
+    {
+      "id": "AZ039",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Beginner",
+      "question": "A developer wants to host a web application without managing the underlying servers. Which service fits best?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Data Box"
+        },
+        {
+          "id": "b",
+          "text": "Azure Migrate"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure App Service"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure App Service is a PaaS offering for hosting web apps, APIs and mobile backends.",
+      "wrongChoices": {
+        "a": {
+          "why": "Data Box is a physical device for moving large amounts of data to Azure.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Migrate assesses and moves existing workloads to Azure. It does not host web apps.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not host the application itself.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ040",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Intermediate",
+      "question": "Which Azure service runs small pieces of code in response to events, such as a file upload, without managing servers?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Virtual Network"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure Functions"
+        },
+        {
+          "id": "d",
+          "text": "Azure ExpressRoute"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Functions is an event-driven serverless compute service.",
+      "wrongChoices": {
+        "a": {
+          "why": "A virtual network connects resources. It does not run code.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Files provides file shares. It does not run code.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "ExpressRoute is a private network connection. It does not run code.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ041",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Intermediate",
+      "question": "Which service lets you run a container quickly without managing virtual machines or an orchestrator?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Table storage"
+        },
+        {
+          "id": "b",
+          "text": "Azure Container Instances"
+        },
+        {
+          "id": "c",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Policy"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Container Instances runs containers on demand with no VM management.",
+      "wrongChoices": {
+        "a": {
+          "why": "Table storage holds structured NoSQL data. It does not run containers.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Monitor collects metrics and logs. It does not run containers.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Policy enforces rules. It does not run containers.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ042",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Intermediate",
+      "question": "Which Azure service is used to deploy and manage containerized applications with Kubernetes orchestration?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Kubernetes Service (AKS)"
+        },
+        {
+          "id": "b",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "c",
+          "text": "Azure Backup"
+        },
+        {
+          "id": "d",
+          "text": "Azure Blob Storage"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "AKS is a managed Kubernetes service that simplifies deploying and operating containerized applications.",
+      "wrongChoices": {
+        "b": {
+          "why": "Azure DNS resolves domain names. It does not orchestrate containers.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Backup protects data. It does not run containerized applications.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Blob Storage stores unstructured data. It does not orchestrate containers.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ043",
+      "domain": "architecture-services",
+      "topic": "Compute services",
+      "difficulty": "Beginner",
+      "question": "Which service delivers cloud-hosted Windows desktops and apps to users remotely?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Cost Management"
+        },
+        {
+          "id": "b",
+          "text": "Azure Blueprints"
+        },
+        {
+          "id": "c",
+          "text": "Azure Service Health"
+        },
+        {
+          "id": "d",
+          "text": "Azure Virtual Desktop"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure Virtual Desktop is a desktop and app virtualization service running in the cloud.",
+      "wrongChoices": {
+        "a": {
+          "why": "Cost Management tracks spending. It does not deliver desktops.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Blueprints package governance settings for repeatable environments. They do not deliver desktops.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Service Health reports Azure outages and maintenance. It does not deliver desktops.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ044",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Beginner",
+      "question": "What is an Azure Virtual Network (VNet) used for?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Recording billing data"
+        },
+        {
+          "id": "b",
+          "text": "Storing blob files"
+        },
+        {
+          "id": "c",
+          "text": "Creating a private, isolated network in Azure where resources can communicate"
+        },
+        {
+          "id": "d",
+          "text": "Sending marketing email"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "VNets let Azure resources communicate securely with each other, the internet and on-premises networks.",
+      "wrongChoices": {
+        "a": {
+          "why": "Billing data is handled by Cost Management, not virtual networks."
+        },
+        "b": {
+          "why": "Files are stored in storage accounts. A virtual network is for communication between resources.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Virtual networks do not send email. They connect resources privately."
+        }
+      }
+    },
+    {
+      "id": "AZ045",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Intermediate",
+      "question": "Which service creates an encrypted connection over the public internet between an on-premises network and Azure?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "VPN Gateway"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Data Box"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "VPN Gateway sends encrypted traffic across the public internet between networks.",
+      "wrongChoices": {
+        "b": {
+          "why": "Azure Files provides file shares, not network connections.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Advisor gives recommendations, not network connections.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Data Box moves data by shipping a physical device, not through an encrypted network connection.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ046",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Intermediate",
+      "question": "How does Azure ExpressRoute differ from a VPN connection?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "It is a free service for everyone"
+        },
+        {
+          "id": "b",
+          "text": "It uses a private connection that does not travel over the public internet"
+        },
+        {
+          "id": "c",
+          "text": "It only works with mobile phones"
+        },
+        {
+          "id": "d",
+          "text": "It stores blob data"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "ExpressRoute provides a dedicated private connection through a connectivity provider, often with more reliability and predictable performance.",
+      "wrongChoices": {
+        "a": {
+          "why": "ExpressRoute is a paid service, usually arranged through a connectivity provider.",
+          "misconception": "networking-services"
+        },
+        "c": {
+          "why": "ExpressRoute connects networks, such as an office or datacenter, to Azure. It is not for phones.",
+          "misconception": "networking-services"
+        },
+        "d": {
+          "why": "ExpressRoute is a network connection. It does not store data.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ047",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Intermediate",
+      "question": "Which feature filters inbound and outbound network traffic to Azure resources using rules?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Blob storage"
+        },
+        {
+          "id": "b",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "c",
+          "text": "Azure Cosmos DB"
+        },
+        {
+          "id": "d",
+          "text": "Network security groups (NSGs)"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "NSGs contain security rules that allow or deny network traffic based on source, destination, port and protocol.",
+      "wrongChoices": {
+        "a": {
+          "why": "Blob storage stores data. It does not filter network traffic.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Advisor recommends improvements but does not filter network traffic.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Cosmos DB is a database. It does not filter network traffic.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ048",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Beginner",
+      "question": "Which service hosts your domain name records and resolves names using Azure infrastructure?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Backup"
+        },
+        {
+          "id": "b",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure Migrate"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure DNS hosts DNS domains and provides name resolution.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Backup protects data. It does not host domain records.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Monitor collects telemetry. It does not resolve domain names.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Migrate helps move workloads to Azure. It does not host DNS records.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ049",
+      "domain": "architecture-services",
+      "topic": "Networking",
+      "difficulty": "Intermediate",
+      "question": "Which service distributes incoming network traffic across multiple virtual machines to improve availability?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Load Balancer"
+        },
+        {
+          "id": "b",
+          "text": "Azure Key Vault"
+        },
+        {
+          "id": "c",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "d",
+          "text": "Azure Files"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "A load balancer spreads traffic across healthy instances so no single VM is overwhelmed.",
+      "wrongChoices": {
+        "b": {
+          "why": "Key Vault stores secrets. It does not distribute traffic.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Policy enforces rules. It does not distribute traffic.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Files provides file shares. It does not distribute traffic.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ050",
+      "domain": "architecture-services",
+      "topic": "Storage services",
+      "difficulty": "Beginner",
+      "question": "Which Azure Storage service is designed for large amounts of unstructured data such as images and videos?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Queue storage"
+        },
+        {
+          "id": "b",
+          "text": "Blob storage"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure Virtual Desktop"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Blob storage stores massive amounts of unstructured data like documents, media and backups.",
+      "wrongChoices": {
+        "a": {
+          "why": "Queue storage holds messages between application components, not large media files.",
+          "misconception": "storage-services"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not store files.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Virtual Desktop delivers desktops. It is not a storage service.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ051",
+      "domain": "architecture-services",
+      "topic": "Storage services",
+      "difficulty": "Intermediate",
+      "question": "Which service provides fully managed file shares accessible using the SMB protocol?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Cosmos DB"
+        },
+        {
+          "id": "b",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "c",
+          "text": "Azure Files"
+        },
+        {
+          "id": "d",
+          "text": "Azure Advisor"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Files offers managed cloud file shares that can be mounted like traditional network shares.",
+      "wrongChoices": {
+        "a": {
+          "why": "Cosmos DB is a NoSQL database, not a file share service.",
+          "misconception": "data-services"
+        },
+        "b": {
+          "why": "Azure Monitor collects telemetry. It does not provide file shares.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Advisor gives recommendations. It does not provide file shares.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ052",
+      "domain": "architecture-services",
+      "topic": "Storage services",
+      "difficulty": "Intermediate",
+      "question": "Which Azure Storage service is used to store large numbers of messages for asynchronous processing between application components?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Blob storage"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Queue storage"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Queue storage lets application components communicate by passing messages through a queue.",
+      "wrongChoices": {
+        "a": {
+          "why": "Blob storage holds unstructured data such as images, not messages between components.",
+          "misconception": "storage-services"
+        },
+        "b": {
+          "why": "Azure Files provides file shares, not message queues.",
+          "misconception": "storage-services"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not store messages.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ053",
+      "domain": "architecture-services",
+      "topic": "Storage redundancy",
+      "difficulty": "Intermediate",
+      "question": "What does locally redundant storage (LRS) do?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Keeps three copies of your data within a single datacenter"
+        },
+        {
+          "id": "b",
+          "text": "Copies data to a different continent"
+        },
+        {
+          "id": "c",
+          "text": "Spreads data across three regions"
+        },
+        {
+          "id": "d",
+          "text": "Deletes data after one day"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "LRS replicates data three times within one datacenter. It is the lowest-cost option but does not protect against a datacenter-wide failure.",
+      "wrongChoices": {
+        "b": {
+          "why": "LRS keeps all copies in one datacenter. Copying data to another region is geo-redundant storage (GRS).",
+          "misconception": "storage-redundancy"
+        },
+        "c": {
+          "why": "LRS stays within a single datacenter, not across regions.",
+          "misconception": "storage-redundancy"
+        },
+        "d": {
+          "why": "Redundancy options keep extra copies of your data. They do not delete it."
+        }
+      }
+    },
+    {
+      "id": "AZ054",
+      "domain": "architecture-services",
+      "topic": "Storage redundancy",
+      "difficulty": "Intermediate",
+      "question": "What does geo-redundant storage (GRS) provide?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Storage with no copies"
+        },
+        {
+          "id": "b",
+          "text": "Replication of data to a secondary region far from the primary"
+        },
+        {
+          "id": "c",
+          "text": "Replication only within one rack"
+        },
+        {
+          "id": "d",
+          "text": "Free unlimited storage"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "GRS copies data to a secondary region, protecting against a regional outage.",
+      "wrongChoices": {
+        "a": {
+          "why": "Every redundancy option keeps multiple copies. GRS keeps copies in two regions.",
+          "misconception": "storage-redundancy"
+        },
+        "c": {
+          "why": "GRS goes much further than one rack: it copies data to a secondary region.",
+          "misconception": "storage-redundancy"
+        },
+        "d": {
+          "why": "GRS is not free. It costs more than LRS because it stores more copies."
+        }
+      }
+    },
+    {
+      "id": "AZ055",
+      "domain": "architecture-services",
+      "topic": "Storage redundancy",
+      "difficulty": "Intermediate",
+      "question": "What does zone-redundant storage (ZRS) do?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Stores data on a single disk"
+        },
+        {
+          "id": "b",
+          "text": "Archives data offline"
+        },
+        {
+          "id": "c",
+          "text": "Replicates data synchronously across availability zones in one region"
+        },
+        {
+          "id": "d",
+          "text": "Moves data between subscriptions"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "ZRS protects data against datacenter-level failure by copying it across availability zones in the same region.",
+      "wrongChoices": {
+        "a": {
+          "why": "ZRS keeps copies across several availability zones, not on one disk.",
+          "misconception": "storage-redundancy"
+        },
+        "b": {
+          "why": "Archiving is an access tier for rarely used data, not a redundancy option.",
+          "misconception": "storage-services"
+        },
+        "d": {
+          "why": "Redundancy options copy data for protection. They do not move it between subscriptions."
+        }
+      }
+    },
+    {
+      "id": "AZ056",
+      "domain": "architecture-services",
+      "topic": "Storage services",
+      "difficulty": "Intermediate",
+      "question": "Which blob access tier is intended for data that is rarely accessed and can tolerate hours of retrieval delay?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hot"
+        },
+        {
+          "id": "b",
+          "text": "Premium"
+        },
+        {
+          "id": "c",
+          "text": "Standard"
+        },
+        {
+          "id": "d",
+          "text": "Archive"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "The Archive tier has the lowest storage cost but requires rehydration, which can take hours, before data can be read.",
+      "wrongChoices": {
+        "a": {
+          "why": "Hot is for frequently accessed data and has the highest storage cost.",
+          "misconception": "storage-services"
+        },
+        "b": {
+          "why": "Premium is a performance tier for fast, low-latency storage, not a tier for rarely accessed data.",
+          "misconception": "storage-services"
+        },
+        "c": {
+          "why": "Standard is a performance tier, not an access tier for rarely used data.",
+          "misconception": "storage-services"
+        }
+      }
+    },
+    {
+      "id": "AZ057",
+      "domain": "architecture-services",
+      "topic": "Databases",
+      "difficulty": "Beginner",
+      "question": "Which service is a managed relational database offered as PaaS?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure SQL Database"
+        },
+        {
+          "id": "b",
+          "text": "Azure Queue storage"
+        },
+        {
+          "id": "c",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Blueprints"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Azure SQL Database is a managed relational database where Microsoft handles patching, backups and high availability.",
+      "wrongChoices": {
+        "b": {
+          "why": "Queue storage holds messages, not relational data.",
+          "misconception": "data-services"
+        },
+        "c": {
+          "why": "Advisor gives recommendations. It is not a database.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Blueprints package governance settings. They are not a database.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ058",
+      "domain": "architecture-services",
+      "topic": "Databases",
+      "difficulty": "Intermediate",
+      "question": "Which service is a globally distributed, multi-model NoSQL database?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Files"
+        },
+        {
+          "id": "b",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "c",
+          "text": "Azure Cosmos DB"
+        },
+        {
+          "id": "d",
+          "text": "Azure Backup"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Cosmos DB provides low-latency, globally distributed NoSQL data storage with multiple APIs.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Files provides file shares, not a NoSQL database.",
+          "misconception": "data-services"
+        },
+        "b": {
+          "why": "Azure DNS resolves domain names. It is not a database.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Backup protects data. It is not a database.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ059",
+      "domain": "architecture-services",
+      "topic": "Migration tools",
+      "difficulty": "Intermediate",
+      "question": "Which service helps you assess and migrate on-premises servers, databases and applications to Azure?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "b",
+          "text": "Azure Migrate"
+        },
+        {
+          "id": "c",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "d",
+          "text": "Azure Key Vault"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Migrate is a central hub for discovering, assessing and migrating workloads to Azure.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Monitor tracks performance. It does not migrate workloads.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Policy enforces rules. It does not migrate workloads.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Key Vault stores secrets. It does not migrate workloads.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ060",
+      "domain": "architecture-services",
+      "topic": "Migration tools",
+      "difficulty": "Intermediate",
+      "question": "A company has hundreds of terabytes to move and a slow internet connection. Which option suits this offline transfer?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "c",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Data Box"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure Data Box is a physical device shipped to you to transfer large volumes of data to Azure offline.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It cannot move large amounts of data.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Advisor gives recommendations. It cannot move data.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Monitor tracks performance. It cannot move data.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ061",
+      "domain": "architecture-services",
+      "topic": "Migration tools",
+      "difficulty": "Intermediate",
+      "question": "Which tool is a command-line utility for copying data to and from Azure Storage?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "AzCopy"
+        },
+        {
+          "id": "b",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "c",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "d",
+          "text": "Azure Blueprints"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "AzCopy copies blobs and files to or from storage accounts using command-line commands.",
+      "wrongChoices": {
+        "b": {
+          "why": "Advisor gives recommendations. It is not a command-line copy tool.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Policy enforces rules. It does not copy data.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Blueprints package governance settings. They do not copy data.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ062",
+      "domain": "architecture-services",
+      "topic": "Identity and access",
+      "difficulty": "Beginner",
+      "question": "Which Azure service provides cloud-based identity and access management?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Blob Storage"
+        },
+        {
+          "id": "b",
+          "text": "Azure Load Balancer"
+        },
+        {
+          "id": "c",
+          "text": "Microsoft Entra ID"
+        },
+        {
+          "id": "d",
+          "text": "Azure Files"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Microsoft Entra ID (formerly Azure Active Directory) manages user identities and controls access to resources and applications.",
+      "wrongChoices": {
+        "a": {
+          "why": "Blob Storage stores data. It does not manage identities.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "A load balancer distributes traffic. It does not manage identities.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Files provides file shares. It does not manage identities.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ063",
+      "domain": "architecture-services",
+      "topic": "Identity and access",
+      "difficulty": "Beginner",
+      "question": "What does multifactor authentication (MFA) require?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Only a longer password"
+        },
+        {
+          "id": "b",
+          "text": "Two or more verification methods, such as a password plus a phone prompt"
+        },
+        {
+          "id": "c",
+          "text": "Using the same password twice"
+        },
+        {
+          "id": "d",
+          "text": "A shared account for the whole team"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "MFA combines something you know, something you have, or something you are, making stolen passwords much less useful on their own.",
+      "wrongChoices": {
+        "a": {
+          "why": "A longer password is still only one factor. MFA adds a second, different type of proof.",
+          "misconception": "identity-security"
+        },
+        "c": {
+          "why": "Typing the same password twice is still just one factor.",
+          "misconception": "identity-security"
+        },
+        "d": {
+          "why": "Shared accounts weaken security. MFA is about verifying each individual user.",
+          "misconception": "identity-security"
+        }
+      }
+    },
+    {
+      "id": "AZ064",
+      "domain": "architecture-services",
+      "topic": "Identity and access",
+      "difficulty": "Intermediate",
+      "question": "Which feature grants or blocks access based on signals such as user location, device and risk level?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Data Box"
+        },
+        {
+          "id": "b",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "c",
+          "text": "Resource locks"
+        },
+        {
+          "id": "d",
+          "text": "Conditional Access"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Conditional Access evaluates signals and applies policies, for example requiring MFA when signing in from an unusual location.",
+      "wrongChoices": {
+        "a": {
+          "why": "Data Box is a device for moving data. It does not control sign-ins.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Advisor gives recommendations. It does not control sign-ins.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Resource locks protect resources from deletion or changes. They do not evaluate sign-in signals.",
+          "misconception": "governance-tools"
+        }
+      }
+    },
+    {
+      "id": "AZ065",
+      "domain": "architecture-services",
+      "topic": "Identity and access",
+      "difficulty": "Beginner",
+      "question": "What is the benefit of single sign-on (SSO)?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Users can sign in once and access multiple applications without repeated logins"
+        },
+        {
+          "id": "b",
+          "text": "Users can share passwords"
+        },
+        {
+          "id": "c",
+          "text": "Users never need identities"
+        },
+        {
+          "id": "d",
+          "text": "Applications become offline-only"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "SSO improves convenience and can improve security by reducing the number of passwords users must manage.",
+      "wrongChoices": {
+        "b": {
+          "why": "Sharing passwords is a security risk. SSO means one sign-in per person, not shared credentials.",
+          "misconception": "identity-security"
+        },
+        "c": {
+          "why": "SSO still relies on user identities. It just lets one sign-in cover many applications.",
+          "misconception": "identity-security"
+        },
+        "d": {
+          "why": "SSO is about signing in, not about making applications work offline."
+        }
+      }
+    },
+    {
+      "id": "AZ066",
+      "domain": "architecture-services",
+      "topic": "IoT services",
+      "difficulty": "Intermediate",
+      "question": "Which service helps connect, monitor and manage large numbers of Internet of Things (IoT) devices?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Files"
+        },
+        {
+          "id": "b",
+          "text": "Azure IoT Hub"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure Backup"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure IoT Hub is a managed service for secure, two-way communication between IoT devices and the cloud.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Files provides file shares. It does not manage IoT devices.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not manage IoT devices.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Backup protects data. It does not manage IoT devices.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ067",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Beginner",
+      "question": "Which tool lets you estimate the cost of Azure services before deploying them?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "b",
+          "text": "Pricing calculator"
+        },
+        {
+          "id": "c",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Key Vault"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "The Azure pricing calculator estimates the monthly cost of the services and configuration you select.",
+      "wrongChoices": {
+        "a": {
+          "why": "Advisor makes recommendations for resources you already run. It does not estimate costs before you deploy.",
+          "misconception": "cost-tools"
+        },
+        "c": {
+          "why": "Azure Monitor tracks how running resources perform, not what they will cost.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Key Vault stores secrets. It does not estimate costs.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ068",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Intermediate",
+      "question": "A company wants to compare the cost of running workloads on-premises with the cost of running them in Azure. Which tool helps?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "d",
+          "text": "Total Cost of Ownership (TCO) calculator"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "The TCO calculator compares estimated on-premises costs with Azure costs over time.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It does not compare costs.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Files provides file shares. It does not compare costs.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Policy enforces rules. It does not compare costs.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ069",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Beginner",
+      "question": "Which service helps you monitor, analyze and control Azure spending?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Microsoft Cost Management"
+        },
+        {
+          "id": "b",
+          "text": "Azure Load Balancer"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure Data Box"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Microsoft Cost Management helps you track usage and costs, create budgets and find opportunities to save.",
+      "wrongChoices": {
+        "b": {
+          "why": "A load balancer distributes traffic. It does not track spending.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not track spending.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Data Box is a device for moving data. It does not track spending.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ070",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Beginner",
+      "question": "What are tags in Azure used for?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Encrypting data"
+        },
+        {
+          "id": "b",
+          "text": "Increasing network speed"
+        },
+        {
+          "id": "c",
+          "text": "Adding name-value metadata to resources to organize them and track costs"
+        },
+        {
+          "id": "d",
+          "text": "Deleting unused resources"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Tags are key-value pairs, such as Department=Finance, that help organize resources and group costs in reports.",
+      "wrongChoices": {
+        "a": {
+          "why": "Tags are labels. Encryption is handled by other features.",
+          "misconception": "governance-tools"
+        },
+        "b": {
+          "why": "Tags do not affect performance. They are just metadata."
+        },
+        "d": {
+          "why": "Tags do not delete anything, although they can help you find resources you no longer need.",
+          "misconception": "governance-tools"
+        }
+      }
+    },
+    {
+      "id": "AZ071",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Intermediate",
+      "question": "Which of these can affect the price of an Azure resource?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The colour of the Azure portal"
+        },
+        {
+          "id": "b",
+          "text": "The region where the resource is deployed"
+        },
+        {
+          "id": "c",
+          "text": "The user's keyboard layout"
+        },
+        {
+          "id": "d",
+          "text": "The time of day the portal is opened"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Pricing varies by region, resource type, size, usage and other factors, so the same service can cost different amounts in different regions.",
+      "wrongChoices": {
+        "a": {
+          "why": "The portal's colours have no effect on what resources cost."
+        },
+        "c": {
+          "why": "Your keyboard layout has no effect on Azure prices."
+        },
+        "d": {
+          "why": "When you open the portal does not change prices. Prices depend on things like region, size and usage."
+        }
+      }
+    },
+    {
+      "id": "AZ072",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Intermediate",
+      "question": "How can a company reduce cost for steady, predictable VM workloads?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Buying more monitors"
+        },
+        {
+          "id": "b",
+          "text": "Deleting all backups"
+        },
+        {
+          "id": "c",
+          "text": "Disabling its subscription"
+        },
+        {
+          "id": "d",
+          "text": "Using reservations by committing to one or three years of usage"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure Reservations offer significant discounts compared with pay-as-you-go when you commit to a term.",
+      "wrongChoices": {
+        "a": {
+          "why": "Buying monitors adds cost and has nothing to do with Azure VM pricing."
+        },
+        "b": {
+          "why": "Deleting backups saves little and risks losing data. Reservations are the right tool for steady workloads.",
+          "misconception": "pricing-options"
+        },
+        "c": {
+          "why": "Disabling the subscription would stop the workloads entirely."
+        }
+      }
+    },
+    {
+      "id": "AZ073",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Intermediate",
+      "question": "What does Azure Hybrid Benefit allow you to do?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Use eligible on-premises Windows Server or SQL Server licenses with Software Assurance to reduce Azure costs"
+        },
+        {
+          "id": "b",
+          "text": "Get free Azure forever"
+        },
+        {
+          "id": "c",
+          "text": "Skip security updates"
+        },
+        {
+          "id": "d",
+          "text": "Avoid creating subscriptions"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Hybrid Benefit lets organizations apply existing licenses to Azure workloads and save on licensing costs.",
+      "wrongChoices": {
+        "b": {
+          "why": "Hybrid Benefit lowers licensing costs. Azure is not free.",
+          "misconception": "pricing-options"
+        },
+        "c": {
+          "why": "Hybrid Benefit is about licenses, not about skipping updates."
+        },
+        "d": {
+          "why": "You still need a subscription. Hybrid Benefit only reduces licensing costs."
+        }
+      }
+    },
+    {
+      "id": "AZ074",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Intermediate",
+      "question": "Which VM option offers deep discounts by using unused Azure capacity but can be interrupted when Azure needs the capacity back?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Reserved VM"
+        },
+        {
+          "id": "b",
+          "text": "Dedicated host"
+        },
+        {
+          "id": "c",
+          "text": "Spot VM"
+        },
+        {
+          "id": "d",
+          "text": "Premium disk"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Spot VMs suit interruptible workloads such as batch jobs, since they can be evicted when capacity is needed.",
+      "wrongChoices": {
+        "a": {
+          "why": "Reservations give discounts for committing to steady use, and reserved VMs are not interrupted.",
+          "misconception": "pricing-options"
+        },
+        "b": {
+          "why": "A dedicated host is a physical server reserved just for you. It costs more, not less.",
+          "misconception": "pricing-options"
+        },
+        "d": {
+          "why": "Premium disks are faster storage at a higher price, not discounted spare compute.",
+          "misconception": "pricing-options"
+        }
+      }
+    },
+    {
+      "id": "AZ075",
+      "domain": "management-governance",
+      "topic": "Governance tools",
+      "difficulty": "Beginner",
+      "question": "A company wants to ensure resources can only be created in approved regions. Which service enforces this?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Policy"
+        },
+        {
+          "id": "c",
+          "text": "Azure Data Box"
+        },
+        {
+          "id": "d",
+          "text": "Azure Files"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Policy creates, assigns and manages rules that enforce standards and assess compliance across resources.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It cannot restrict where resources are created.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Data Box is a device for moving data. It cannot enforce rules.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure Files provides file shares. It cannot enforce rules.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ076",
+      "domain": "management-governance",
+      "topic": "Governance tools",
+      "difficulty": "Beginner",
+      "question": "Which feature prevents users from accidentally deleting or modifying a critical resource?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "b",
+          "text": "Tags"
+        },
+        {
+          "id": "c",
+          "text": "Azure Migrate"
+        },
+        {
+          "id": "d",
+          "text": "Resource locks"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Resource locks (CanNotDelete or ReadOnly) override user permissions to protect important resources.",
+      "wrongChoices": {
+        "a": {
+          "why": "Advisor recommends improvements. It cannot block deletion.",
+          "misconception": "governance-tools"
+        },
+        "b": {
+          "why": "Tags are labels. They do not protect resources.",
+          "misconception": "governance-tools"
+        },
+        "c": {
+          "why": "Azure Migrate moves workloads to Azure. It does not protect resources.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ077",
+      "domain": "management-governance",
+      "topic": "Governance tools",
+      "difficulty": "Intermediate",
+      "question": "Which service helps an organization discover, classify and govern its data across on-premises, multi-cloud and SaaS sources?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Microsoft Purview"
+        },
+        {
+          "id": "b",
+          "text": "Azure Load Balancer"
+        },
+        {
+          "id": "c",
+          "text": "Azure Virtual Desktop"
+        },
+        {
+          "id": "d",
+          "text": "Azure DNS"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Microsoft Purview provides data governance, risk and compliance tools to understand and protect data.",
+      "wrongChoices": {
+        "b": {
+          "why": "A load balancer distributes traffic. It does not govern data.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Virtual Desktop delivers desktops. It does not govern data.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure DNS resolves domain names. It does not govern data.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ078",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Beginner",
+      "question": "What does Azure role-based access control (RBAC) do?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Speeds up virtual machines"
+        },
+        {
+          "id": "b",
+          "text": "Monitors network cables"
+        },
+        {
+          "id": "c",
+          "text": "Controls what actions users, groups and apps can perform on Azure resources by assigning roles"
+        },
+        {
+          "id": "d",
+          "text": "Estimates monthly costs"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "RBAC assigns roles at a chosen scope so people only have the permissions they need.",
+      "wrongChoices": {
+        "a": {
+          "why": "RBAC controls permissions, not performance."
+        },
+        "b": {
+          "why": "RBAC manages who can do what in Azure, not physical hardware."
+        },
+        "d": {
+          "why": "Cost estimates come from the pricing calculator, not RBAC.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ079",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Beginner",
+      "question": "What does the principle of least privilege mean?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Giving every user administrator access"
+        },
+        {
+          "id": "b",
+          "text": "Giving users only the minimum permissions needed to do their job"
+        },
+        {
+          "id": "c",
+          "text": "Removing all passwords"
+        },
+        {
+          "id": "d",
+          "text": "Sharing accounts to save money"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Least privilege limits damage from mistakes or compromised accounts by restricting access to what is necessary.",
+      "wrongChoices": {
+        "a": {
+          "why": "Giving everyone administrator access is the opposite of least privilege.",
+          "misconception": "identity-security"
+        },
+        "c": {
+          "why": "Least privilege limits permissions. It does not remove sign-in.",
+          "misconception": "identity-security"
+        },
+        "d": {
+          "why": "Shared accounts make it impossible to limit and track each person's access.",
+          "misconception": "identity-security"
+        }
+      }
+    },
+    {
+      "id": "AZ080",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Intermediate",
+      "question": "What does the defense in depth approach use?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A single strong firewall only"
+        },
+        {
+          "id": "b",
+          "text": "Only passwords"
+        },
+        {
+          "id": "c",
+          "text": "Only physical locks"
+        },
+        {
+          "id": "d",
+          "text": "Multiple layers of protection so that if one fails, others still protect resources"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Layers such as physical security, identity, perimeter, network, compute, application and data work together.",
+      "wrongChoices": {
+        "a": {
+          "why": "Relying on one layer is what defense in depth avoids. If that layer fails, nothing else protects you.",
+          "misconception": "identity-security"
+        },
+        "b": {
+          "why": "Passwords are only one layer. Defense in depth combines many.",
+          "misconception": "identity-security"
+        },
+        "c": {
+          "why": "Physical security is one layer of many, not the whole approach.",
+          "misconception": "identity-security"
+        }
+      }
+    },
+    {
+      "id": "AZ081",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Intermediate",
+      "question": "Which statement best describes the Zero Trust model?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Never trust by default; always verify explicitly and assume a breach is possible"
+        },
+        {
+          "id": "b",
+          "text": "Trust everything inside the corporate network"
+        },
+        {
+          "id": "c",
+          "text": "Trust all users who know the Wi-Fi password"
+        },
+        {
+          "id": "d",
+          "text": "Never use passwords or identities"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Zero Trust requires verification for every access request instead of assuming anything is safe because of where it comes from.",
+      "wrongChoices": {
+        "b": {
+          "why": "Trusting everything inside the network is the old perimeter model that Zero Trust replaces.",
+          "misconception": "identity-security"
+        },
+        "c": {
+          "why": "Knowing a Wi-Fi password proves nothing about who someone is. Zero Trust verifies every request.",
+          "misconception": "identity-security"
+        },
+        "d": {
+          "why": "Zero Trust depends heavily on verifying identities.",
+          "misconception": "identity-security"
+        }
+      }
+    },
+    {
+      "id": "AZ082",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Intermediate",
+      "question": "Which service provides security posture management and threat protection across Azure and hybrid workloads?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Microsoft Defender for Cloud"
+        },
+        {
+          "id": "d",
+          "text": "Azure Data Box"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Microsoft Defender for Cloud assesses your security posture, gives recommendations and helps detect threats.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It does not detect threats.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Files provides file shares. It does not detect threats.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Data Box is a device for moving data. It does not detect threats.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ083",
+      "domain": "management-governance",
+      "topic": "Security and access control",
+      "difficulty": "Beginner",
+      "question": "Which service securely stores secrets, encryption keys and certificates?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Load Balancer"
+        },
+        {
+          "id": "b",
+          "text": "Azure Key Vault"
+        },
+        {
+          "id": "c",
+          "text": "Azure Migrate"
+        },
+        {
+          "id": "d",
+          "text": "Azure Virtual Network"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Key Vault keeps sensitive values out of application code and controls who can access them.",
+      "wrongChoices": {
+        "a": {
+          "why": "A load balancer distributes traffic. It does not store secrets.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure Migrate moves workloads to Azure. It does not store secrets.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "A virtual network connects resources. It does not store secrets.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ084",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Beginner",
+      "question": "What is the Azure portal?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A physical door to a datacenter"
+        },
+        {
+          "id": "b",
+          "text": "A type of virtual machine"
+        },
+        {
+          "id": "c",
+          "text": "A billing invoice"
+        },
+        {
+          "id": "d",
+          "text": "A web-based interface for creating and managing Azure resources"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "The Azure portal is a graphical web interface for managing resources without writing commands.",
+      "wrongChoices": {
+        "a": {
+          "why": "The portal is a website, not a physical entrance."
+        },
+        "b": {
+          "why": "You can create and manage VMs in the portal, but the portal itself is not a VM.",
+          "misconception": "management-tools"
+        },
+        "c": {
+          "why": "You can view invoices in the portal, but the portal itself is a management interface.",
+          "misconception": "management-tools"
+        }
+      }
+    },
+    {
+      "id": "AZ085",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Intermediate",
+      "question": "What is the Azure CLI?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A cross-platform command-line tool for managing Azure resources"
+        },
+        {
+          "id": "b",
+          "text": "A hardware device"
+        },
+        {
+          "id": "c",
+          "text": "A pricing tier"
+        },
+        {
+          "id": "d",
+          "text": "A type of database"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "The Azure CLI runs on Windows, macOS and Linux and lets you manage resources using commands and scripts.",
+      "wrongChoices": {
+        "b": {
+          "why": "The CLI is software you run in a terminal, not a hardware device.",
+          "misconception": "management-tools"
+        },
+        "c": {
+          "why": "Pricing tiers set service levels. The CLI is a management tool."
+        },
+        "d": {
+          "why": "You can manage databases with the CLI, but it is not a database itself."
+        }
+      }
+    },
+    {
+      "id": "AZ086",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Intermediate",
+      "question": "Which tool provides cmdlets for managing Azure resources and is popular with administrators who use PowerShell?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Files"
+        },
+        {
+          "id": "b",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "c",
+          "text": "Azure PowerShell"
+        },
+        {
+          "id": "d",
+          "text": "Azure Data Box"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure PowerShell offers cmdlets for automating and managing Azure resources.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Files provides file shares. It is not a scripting tool.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure DNS resolves domain names. It is not a scripting tool.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Data Box is a device for moving data. It is not a scripting tool.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ087",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Beginner",
+      "question": "What is Azure Cloud Shell?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A physical server cover"
+        },
+        {
+          "id": "b",
+          "text": "A browser-accessible shell for managing Azure with Bash or PowerShell"
+        },
+        {
+          "id": "c",
+          "text": "A pricing report"
+        },
+        {
+          "id": "d",
+          "text": "A storage tier"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Cloud Shell gives you an authenticated command-line environment in your browser with common tools preinstalled.",
+      "wrongChoices": {
+        "a": {
+          "why": "Cloud Shell is a browser-based command line, not hardware."
+        },
+        "c": {
+          "why": "Cloud Shell runs commands. It is not a report."
+        },
+        "d": {
+          "why": "Cloud Shell uses a small file share to keep your files, but it is a command-line environment, not a storage tier.",
+          "misconception": "management-tools"
+        }
+      }
+    },
+    {
+      "id": "AZ088",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Intermediate",
+      "question": "Which service lets you manage servers and resources running on-premises, at the edge or in other clouds from Azure?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Arc"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure Arc extends Azure management and governance to resources outside Azure.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It does not manage servers outside Azure.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Files provides file shares. It does not manage servers outside Azure.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Advisor gives recommendations for Azure resources. It does not extend management to resources outside Azure.",
+          "misconception": "management-tools"
+        }
+      }
+    },
+    {
+      "id": "AZ089",
+      "domain": "management-governance",
+      "topic": "Management tools",
+      "difficulty": "Intermediate",
+      "question": "What is infrastructure as code (IaC), such as ARM templates or Bicep, used for?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Defining and deploying Azure resources consistently from declarative files"
+        },
+        {
+          "id": "b",
+          "text": "Painting datacenter walls"
+        },
+        {
+          "id": "c",
+          "text": "Writing marketing text"
+        },
+        {
+          "id": "d",
+          "text": "Increasing monitor size"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "IaC lets you describe infrastructure in files so deployments are repeatable, version-controlled and consistent.",
+      "wrongChoices": {
+        "b": {
+          "why": "Infrastructure as code describes cloud resources in files. It has nothing to do with buildings."
+        },
+        "c": {
+          "why": "Infrastructure as code defines resources, not marketing content."
+        },
+        "d": {
+          "why": "Infrastructure as code has nothing to do with monitor size."
+        }
+      }
+    },
+    {
+      "id": "AZ090",
+      "domain": "management-governance",
+      "topic": "Monitoring",
+      "difficulty": "Beginner",
+      "question": "Which service collects and analyzes telemetry such as metrics and logs from Azure resources and applications?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Azure Blob Storage"
+        },
+        {
+          "id": "c",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Azure Migrate"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Monitor helps you understand how applications and resources are performing and respond to issues.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It does not analyse telemetry.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Blob storage can hold logs, but it does not collect or analyse them.",
+          "misconception": "monitoring-tools"
+        },
+        "d": {
+          "why": "Azure Migrate moves workloads to Azure. It does not analyse telemetry.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ091",
+      "domain": "management-governance",
+      "topic": "Monitoring",
+      "difficulty": "Intermediate",
+      "question": "Which service tells you about Azure service issues, planned maintenance and health advisories that affect your own resources?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Pricing calculator"
+        },
+        {
+          "id": "b",
+          "text": "Azure Service Health"
+        },
+        {
+          "id": "c",
+          "text": "Azure Key Vault"
+        },
+        {
+          "id": "d",
+          "text": "Azure DNS"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Azure Service Health gives personalized alerts and guidance when Azure events may affect your resources.",
+      "wrongChoices": {
+        "a": {
+          "why": "The pricing calculator estimates costs. It does not report service issues.",
+          "misconception": "cost-tools"
+        },
+        "c": {
+          "why": "Key Vault stores secrets. It does not report service issues.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Azure DNS resolves domain names. It does not report service issues.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ092",
+      "domain": "management-governance",
+      "topic": "Monitoring",
+      "difficulty": "Beginner",
+      "question": "Which service analyzes your Azure resources and gives personalized recommendations on reliability, security, performance, cost and operational excellence?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Data Box"
+        },
+        {
+          "id": "b",
+          "text": "Azure Files"
+        },
+        {
+          "id": "c",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "d",
+          "text": "Azure Advisor"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Azure Advisor reviews your deployed resources and suggests best-practice improvements.",
+      "wrongChoices": {
+        "a": {
+          "why": "Data Box is a device for moving data. It does not give recommendations.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Azure Files provides file shares. It does not give recommendations.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Azure DNS resolves domain names. It does not give recommendations.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ093",
+      "domain": "management-governance",
+      "topic": "Monitoring",
+      "difficulty": "Intermediate",
+      "question": "What do Azure Monitor alerts do?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Notify you or trigger actions when a defined condition is met, such as high CPU use"
+        },
+        {
+          "id": "b",
+          "text": "Delete resources automatically"
+        },
+        {
+          "id": "c",
+          "text": "Increase prices"
+        },
+        {
+          "id": "d",
+          "text": "Change region names"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "Alerts proactively notify administrators of issues so they can respond quickly.",
+      "wrongChoices": {
+        "b": {
+          "why": "Alerts can trigger actions, but their job is to notify you, not to delete resources.",
+          "misconception": "monitoring-tools"
+        },
+        "c": {
+          "why": "Alerts do not change prices."
+        },
+        "d": {
+          "why": "Alerts do not change anything about regions."
+        }
+      }
+    },
+    {
+      "id": "AZ094",
+      "domain": "management-governance",
+      "topic": "SLAs and service lifecycle",
+      "difficulty": "Beginner",
+      "question": "What does a service level agreement (SLA) describe?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The colour theme of a service"
+        },
+        {
+          "id": "b",
+          "text": "The size of a datacenter"
+        },
+        {
+          "id": "c",
+          "text": "Microsoft's commitments for uptime and connectivity of a service"
+        },
+        {
+          "id": "d",
+          "text": "The price of every service"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "An SLA states the expected availability, usually as a percentage, and what remedies may apply if it is not met.",
+      "wrongChoices": {
+        "a": {
+          "why": "An SLA is about availability commitments, not appearance."
+        },
+        "b": {
+          "why": "An SLA describes how available a service will be, not the size of a datacenter."
+        },
+        "d": {
+          "why": "Prices are published separately. An SLA describes uptime and connectivity commitments.",
+          "misconception": "sla-basics"
+        }
+      }
+    },
+    {
+      "id": "AZ095",
+      "domain": "management-governance",
+      "topic": "SLAs and service lifecycle",
+      "difficulty": "Advanced",
+      "question": "If an application depends on two services that each have a 99.9% SLA, what is true of the composite SLA?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "It is higher than 99.9%"
+        },
+        {
+          "id": "b",
+          "text": "It is lower than 99.9%"
+        },
+        {
+          "id": "c",
+          "text": "It is always exactly 100%"
+        },
+        {
+          "id": "d",
+          "text": "SLAs cannot be combined"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Multiplying the availabilities of dependent services produces a lower combined figure, so adding dependencies reduces the composite SLA unless redundancy is designed in.",
+      "wrongChoices": {
+        "a": {
+          "why": "Each dependency adds another chance of failure, so the combined figure goes down, not up.",
+          "misconception": "sla-basics"
+        },
+        "c": {
+          "why": "No SLA promises 100%, and combining services lowers availability.",
+          "misconception": "sla-basics"
+        },
+        "d": {
+          "why": "SLAs can be combined by multiplying the availability percentages.",
+          "misconception": "sla-basics"
+        }
+      }
+    },
+    {
+      "id": "AZ096",
+      "domain": "management-governance",
+      "topic": "SLAs and service lifecycle",
+      "difficulty": "Intermediate",
+      "question": "What is generally true of services in public preview?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "They always include a full production SLA"
+        },
+        {
+          "id": "b",
+          "text": "They are not available to anyone"
+        },
+        {
+          "id": "c",
+          "text": "They are permanently free"
+        },
+        {
+          "id": "d",
+          "text": "They may lack an SLA and are not generally recommended for production workloads"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Preview features are released for evaluation and feedback and often have limited or no SLA and support.",
+      "wrongChoices": {
+        "a": {
+          "why": "Preview services usually do not have a full SLA. That comes with general availability.",
+          "misconception": "sla-basics"
+        },
+        "b": {
+          "why": "Public preview is open to anyone who wants to try it.",
+          "misconception": "sla-basics"
+        },
+        "c": {
+          "why": "Some previews are discounted, but services are not permanently free.",
+          "misconception": "sla-basics"
+        }
+      }
+    },
+    {
+      "id": "AZ097",
+      "domain": "management-governance",
+      "topic": "Compliance",
+      "difficulty": "Intermediate",
+      "question": "Where can organizations find compliance and security documentation about Microsoft cloud services?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Microsoft Service Trust Portal"
+        },
+        {
+          "id": "b",
+          "text": "The Azure DNS blade"
+        },
+        {
+          "id": "c",
+          "text": "A virtual machine's desktop"
+        },
+        {
+          "id": "d",
+          "text": "A storage account key"
+        }
+      ],
+      "correctChoiceId": "a",
+      "explanation": "The Service Trust Portal provides audit reports, compliance guides and other trust resources.",
+      "wrongChoices": {
+        "b": {
+          "why": "DNS settings manage domain names, not compliance documents."
+        },
+        "c": {
+          "why": "A virtual machine's desktop holds your own files, not Microsoft's compliance reports."
+        },
+        "d": {
+          "why": "A storage account key is a credential for your data, not a source of compliance documents."
+        }
+      }
+    },
+    {
+      "id": "AZ098",
+      "domain": "management-governance",
+      "topic": "Compliance",
+      "difficulty": "Intermediate",
+      "question": "Which option is a separate Azure cloud built to meet the compliance and sovereignty needs of government customers?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure Files"
+        },
+        {
+          "id": "b",
+          "text": "Azure Advisor"
+        },
+        {
+          "id": "c",
+          "text": "Azure Government"
+        },
+        {
+          "id": "d",
+          "text": "Azure Key Vault"
+        }
+      ],
+      "correctChoiceId": "c",
+      "explanation": "Azure Government is a physically and logically separate cloud for government agencies and their partners with specific compliance requirements.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure Files provides file shares. It is not a separate cloud.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "Advisor gives recommendations. It is not a separate cloud.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Key Vault stores secrets. It is not a separate cloud.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ099",
+      "domain": "management-governance",
+      "topic": "Monitoring",
+      "difficulty": "Intermediate",
+      "question": "Which Azure Monitor capability helps developers monitor the performance and availability of live web applications?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Azure DNS"
+        },
+        {
+          "id": "b",
+          "text": "Application Insights"
+        },
+        {
+          "id": "c",
+          "text": "Azure Data Box"
+        },
+        {
+          "id": "d",
+          "text": "Azure Blueprints"
+        }
+      ],
+      "correctChoiceId": "b",
+      "explanation": "Application Insights collects telemetry such as response times, failures and usage from running applications.",
+      "wrongChoices": {
+        "a": {
+          "why": "Azure DNS resolves domain names. It does not monitor applications.",
+          "misconception": "service-purpose"
+        },
+        "c": {
+          "why": "Data Box is a device for moving data. It does not monitor applications.",
+          "misconception": "service-purpose"
+        },
+        "d": {
+          "why": "Blueprints package governance settings. They do not monitor applications.",
+          "misconception": "service-purpose"
+        }
+      }
+    },
+    {
+      "id": "AZ100",
+      "domain": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "Beginner",
+      "question": "A team wants an email warning when monthly Azure spending reaches 80% of its planned amount. What should it configure?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A virtual network peering"
+        },
+        {
+          "id": "b",
+          "text": "A resource lock"
+        },
+        {
+          "id": "c",
+          "text": "A storage tier change"
+        },
+        {
+          "id": "d",
+          "text": "A budget with alert thresholds in Cost Management"
+        }
+      ],
+      "correctChoiceId": "d",
+      "explanation": "Budgets in Microsoft Cost Management can send notifications when actual or forecast spending crosses thresholds you set.",
+      "wrongChoices": {
+        "a": {
+          "why": "Virtual network peering connects networks. It does not track spending.",
+          "misconception": "service-purpose"
+        },
+        "b": {
+          "why": "A resource lock prevents deletion or changes. It cannot warn you about spending.",
+          "misconception": "governance-tools"
+        },
+        "c": {
+          "why": "Changing a storage tier can lower costs, but it does not send spending warnings.",
+          "misconception": "cost-tools"
+        }
+      }
+    }
+  ]
+}
