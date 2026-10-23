@@ -8,7 +8,7 @@ const bankSchema = z.object({
         id: z.string().min(1),
         name: z.string().min(1),
         examWeight: z.object({ min: z.number().positive(), max: z.number().positive() }),
-        learningPath: z.string().url(),
+        learningPath: z.string().url().optional(),
       }),
     )
     .min(1),
@@ -19,6 +19,7 @@ const bankSchema = z.object({
         id: z.string().min(1),
         domain: z.string().min(1),
         topic: z.string().min(1),
+        difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']).optional(),
         question: z.string().min(1),
         choices: z.array(z.object({ id: z.string().min(1), text: z.string().min(1) })).min(2),
         correctChoiceId: z.string().min(1),
@@ -27,7 +28,7 @@ const bankSchema = z.object({
           z.string(),
           z.object({ why: z.string().min(1), misconception: z.string().optional() }),
         ),
-        learnMoreUrl: z.string().url(),
+        learnMoreUrl: z.string().url().optional(),
       }),
     )
     .min(1),
@@ -88,8 +89,8 @@ export function createQuestionBank(raw) {
 
 // What the browser is allowed to see before the learner answers: no correct answer, no explanations.
 export function toPublicQuestion(question) {
-  const { id, domain, topic, question: text, choices } = question;
-  return { id, domain, topic, question: text, choices };
+  const { id, domain, topic, difficulty, question: text, choices } = question;
+  return { id, domain, topic, difficulty, question: text, choices };
 }
 
 function findContentProblems(data) {

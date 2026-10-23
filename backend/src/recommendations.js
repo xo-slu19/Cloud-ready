@@ -16,7 +16,7 @@ export function buildRecommendations(summary, bank) {
       type: 'weak-domain',
       title: `Strengthen "${d.name}"`,
       message: `You mastered ${d.masteryPercent}% of these questions (target: ${MASTERY_TARGET}%). This area is ${d.examWeight.min}-${d.examWeight.max}% of the exam.`,
-      learnMoreUrl: bank.getDomain(d.domain).learningPath,
+      learnMoreUrl: bank.getDomain(d.domain).learningPath ?? null,
     });
   }
 

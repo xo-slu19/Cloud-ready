@@ -30,7 +30,7 @@ export function buildFeedback(question, answer, bank) {
       ? { tag: wrong.misconception, label: bank.misconceptionLabel(wrong.misconception) }
       : null,
     whyOthersAreWrong: Object.fromEntries(Object.entries(question.wrongChoices).map(([id, w]) => [id, w.why])),
-    learnMoreUrl: question.learnMoreUrl,
+    learnMoreUrl: question.learnMoreUrl ?? null,
   };
 }
 
@@ -125,7 +125,7 @@ function findMisconceptions(graded, bank) {
       label: bank.misconceptionLabel(tag),
       count: 0,
       questionIds: [],
-      learnMoreUrl: question.learnMoreUrl,
+      learnMoreUrl: question.learnMoreUrl ?? null,
     };
     entry.count += 1;
     entry.questionIds.push(question.id);
@@ -148,6 +148,6 @@ function toReviewItem({ answer, question }) {
     luckyGuess: isLuckyGuess(answer),
     explanation: question.explanation,
     whyYourChoiceIsWrong: answer.correct ? null : question.wrongChoices[answer.choiceId].why,
-    learnMoreUrl: question.learnMoreUrl,
+    learnMoreUrl: question.learnMoreUrl ?? null,
   };
 }

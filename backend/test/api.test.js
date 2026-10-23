@@ -265,3 +265,27 @@ test('the question bank rejects broken content at startup', () => {
     return true;
   });
 });
+
+test('links and difficulty are optional in the question bank', () => {
+  const bankWithoutLinks = createQuestionBank({
+    domains: [{ id: 'd1', name: 'D1', examWeight: { min: 10, max: 20 } }],
+    misconceptions: {},
+    questions: [
+      {
+        id: 'q1',
+        domain: 'd1',
+        topic: 'T',
+        question: 'Q?',
+        choices: [
+          { id: 'a', text: 'A' },
+          { id: 'b', text: 'B' },
+        ],
+        correctChoiceId: 'a',
+        explanation: 'Because.',
+        wrongChoices: { b: { why: 'No.' } },
+      },
+    ],
+  });
+  assert.equal(bankWithoutLinks.questionCount, 1);
+  assert.equal(bankWithoutLinks.getQuestion('q1').learnMoreUrl, undefined);
+});
