@@ -68,7 +68,8 @@ test('questions never reveal the answer before the learner answers', async () =>
 
 test('full quiz: feedback, lucky guesses, misconceptions, results and saved attempt', async () => {
   const learner = { 'x-learner-id': LEARNER };
-  const quiz = await startQuiz({ count: 3, domains: ['management-governance'] }, learner);
+  // Governance tools has exactly 3 questions, and every wrong option on them carries a misconception
+  const quiz = await startQuiz({ count: 3, topics: ['Governance tools'] }, learner);
   let question = quiz.question;
 
   // 1: correct and sure
@@ -122,7 +123,7 @@ test('full quiz: feedback, lucky guesses, misconceptions, results and saved atte
 
   const recs = results.body.recommendations;
   assert.deepEqual(recs.items.map((i) => i.type), ['weak-domain', 'misconception', 'lucky-guess']);
-  assert.equal(recs.practiceSet.topics.length, 2);
+  assert.deepEqual(recs.practiceSet.topics, ['Governance tools']);
 
   // The practice set can be posted straight back to start a new quiz
   const practice = await startQuiz(recs.practiceSet);

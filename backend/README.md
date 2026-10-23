@@ -33,6 +33,7 @@ The API runs at `http://localhost:3000/api`. Check it with `http://localhost:300
 | `npm run dev` | Start with auto-restart on file changes, reading `.env` if present |
 | `npm test` | Run the automated API tests (starts its own temporary server) |
 | `npm run smoke` | Play one full quiz against the running server and report each step. Add a URL to check a deployed server: `npm run smoke -- https://your-app.onrender.com` |
+| `npm run build:questions` | Rebuild `data/questions.json` from the files in `data/source/` |
 | `npm run check:questions` | Validate `data/questions.json` and list question counts per topic |
 
 On Windows PowerShell, if `npm` is blocked with "running scripts is disabled", use `npm.cmd` instead (for example `npm.cmd test`), or use Git Bash.
@@ -47,8 +48,9 @@ Environment variables (see `.env.example`):
 ## Project structure
 
 ```
-data/questions.json     Question bank (domains, misconception labels, questions)
-scripts/                check-questions.js: validates the question bank
+data/questions.json     Question bank the server loads (generated, do not edit by hand)
+data/source/            Question bank sources: question-bank.json and enrichment.json
+scripts/                build-question-bank.js, check-questions.js, smoke.js
 src/server.js           Starts the server
 src/app.js              Express setup: CORS, JSON parsing, routes, error handling
 src/routes.js           All API endpoints
@@ -82,7 +84,7 @@ The header is optional. Without it, quizzes still work, but they are not saved t
 ### `GET /health`
 
 ```json
-{ "status": "ok", "questions": 12, "uptimeSeconds": 42 }
+{ "status": "ok", "questions": 100, "uptimeSeconds": 42 }
 ```
 
 ### `GET /topics`
@@ -259,29 +261,35 @@ Every error has the same shape:
 
 ## Adding questions (Product / Learning lead)
 
-Questions live in `data/questions.json`. Each question looks like this:
+The backend loads `data/questions.json`, but **don't edit that file by hand**. It is generated from two source files:
 
-```json
-{
-  "id": "mg-001",
-  "domain": "management-governance",
-  "topic": "Azure Policy",
-  "question": "...",
-  "choices": [{ "id": "a", "text": "..." }, { "id": "b", "text": "..." }],
-  "correctChoiceId": "b",
-  "explanation": "Why the correct answer is right.",
-  "wrongChoices": {
-    "a": { "why": "Why this option is wrong.", "misconception": "policy-vs-rbac" }
-  },
-  "learnMoreUrl": "https://learn.microsoft.com/..."
-}
+| File | Contains | Edited by |
+|---|---|---|
+| `data/source/question-bank.json` | Questions, options (A-D), correct answer, explanation, domain, difficulty | Product / Learning lead |
+| `data/source/enrichment.json` | For each question: its topic, and for every wrong option a `why` and an optional `misconception` tag. Also the list of misconception tags. | Product / Learning lead (drafts provided by Backend) |
+
+After editing either file, rebuild and check:
+
+```bash
+npm run build:questions
+npm test
 ```
 
-Rules (checked automatically when the server starts and by `npm run check:questions`):
+An entry in `enrichment.json` looks like this, using the same option letters as `question-bank.json`:
 
+```json
+"AZ075": { "topic": "Governance tools", "wrong": {
+  "A": { "why": "Azure DNS resolves domain names. It cannot restrict where resources are created.", "misconception": "service-purpose" }
+} }
+```
+
+Rules (checked by `npm run build:questions`, when the server starts, and by `npm run check:questions`):
+
+- Every question in `question-bank.json` needs an entry in `enrichment.json`.
 - Every wrong option needs a `why`. This is the core promise of the app.
-- `misconception` is optional, but must be a key in the `misconceptions` list at the top of the file.
-- `topic` names are free text; questions with the same topic name are grouped together.
+- `misconception` is optional, but must be one of the tags in the `misconceptions` list in `enrichment.json`.
+- `topic` names are free text; questions with the same topic name are grouped together and used for practice sets.
+- Questions may also have an optional `learnMoreUrl`.
 - Write original questions. Never copy real exam questions or dumps.
 
 ## Notes for the team
